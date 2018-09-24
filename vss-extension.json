@@ -1,0 +1,67 @@
+{
+    "manifestVersion": 1,
+    "id": "samples",
+    "publisher": "ms-samples",
+    "version": "1.0.21",
+    "name": "Extension Sample",
+    "description": "Azure DevOps extension sample",
+    "categories": [
+        "Developer samples"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "hub",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+            ],
+            "includes": [
+                "ms.vss-tfs-web.tfs-page-data-service",
+                "ms.vss-features.host-navigation-service",
+                "ms.vss-features.extension-data-service",
+                "ms.vss-features.host-dialog-service"
+            ],
+            "properties": {
+                "name": "Sample Hub",
+                "uri": "static/hub.html"
+            }
+        },
+
+        {
+            "id": "panel-content",
+            "type": "ms.vss-web.external-content",
+            "properties": {
+                "uri": "static/panel.html"
+            }
+        }
+    ],
+    "icons": {
+        "default": "logo.png"
+    },
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "files": [
+        {
+            "path": "static",
+            "addressable": true
+        },
+        {
+            "path": "dist/js",
+            "addressable": true,
+            "packagePath": "scripts"
+        },
+        {
+            "path": "node_modules/azure-devops-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "sdk"
+        }
+    ]
+}
