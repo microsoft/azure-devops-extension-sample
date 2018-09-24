@@ -1,6 +1,6 @@
 {
   "name": "azure-devops-extension-sample",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Sample Azure DevOps web extension",
   "keywords": [
     "extensions",

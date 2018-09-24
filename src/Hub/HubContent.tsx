@@ -34,7 +34,7 @@ export class HubContent extends React.Component<{}, IHubContentState> {
             const userName = DevOps.getUser().name;
             this.setState({ userName });
 
-            DevOps.getService("ms.vss-tfs-web.tfs-page-data-service").then((projectService: DevOps.IProjectPageService) => {
+            DevOps.getService<DevOps.IProjectPageService>(DevOps.CommonServiceIds.ProjectPageService).then((projectService) => {
                 projectService.getProject().then((project) => {
                     if (project) {
                         this.setState({ projectName: project.name });
@@ -43,10 +43,10 @@ export class HubContent extends React.Component<{}, IHubContentState> {
             });
 
             DevOps.getAccessToken().then((accessToken) => {
-                DevOps.getService("ms.vss-features.extension-data-service").then((extDataService: DevOps.IExtensionDataService) => {
+                DevOps.getService<DevOps.IExtensionDataService>(DevOps.CommonServiceIds.ExtensionDataService).then((extDataService) => {
                     extDataService.getExtensionDataManager(DevOps.getExtensionContext().id, accessToken).then((dataMgr) => {
                         this._dataManager = dataMgr;
-                        this._dataManager.getValue("test-id").then((data: string) => {
+                        this._dataManager.getValue<string>("test-id").then((data) => {
                             this.setState({ extensionData: data });
                         });
                     });
@@ -84,7 +84,7 @@ export class HubContent extends React.Component<{}, IHubContentState> {
     }
 
     private showMessageBanner(level: DevOps.MessageBannerLevel, messageFormat: string, messageLinks?: DevOps.IGlobalMessageLink[]) {
-        DevOps.getService("ms.vss-tfs-web.tfs-global-messages-service").then((globalMessagesSvc: DevOps.IGlobalMessagesService) => {
+        DevOps.getService<DevOps.IGlobalMessagesService>(DevOps.CommonServiceIds.GlobalMessagesService).then((globalMessagesSvc) => {
             globalMessagesSvc.setGlobalMessageBanner({
                 level: level,
                 messageFormat: messageFormat,
@@ -94,7 +94,7 @@ export class HubContent extends React.Component<{}, IHubContentState> {
     }
 
     private onURLHashTestClick = (): void => {
-        DevOps.getService("ms.vss-features.host-navigation-service").then((navService: DevOps.IHostNavigationService) => {
+        DevOps.getService<DevOps.IHostNavigationService>(DevOps.CommonServiceIds.HostNavigationService).then((navService) => {
             var time = new Date().getTime() + "";
             navService.setHash("time=" + time);
             navService.setDocumentTitle("MyHub: " + time);
@@ -111,7 +111,7 @@ export class HubContent extends React.Component<{}, IHubContentState> {
     }
 
     private onMessagePromptClick = (): void => {
-        DevOps.getService("ms.vss-features.host-dialog-service").then((dialogService: DevOps.IHostDialogService) => {
+        DevOps.getService<DevOps.IHostDialogService>(DevOps.CommonServiceIds.HostDialogService).then((dialogService) => {
             dialogService.openMessageDialog("my message dialog", {
                 showCancel: true,
                 title: "Message dialog",
@@ -123,7 +123,7 @@ export class HubContent extends React.Component<{}, IHubContentState> {
     }
 
     private onCustomPromptClick = (): void => {
-        DevOps.getService("ms.vss-features.host-dialog-service").then((dialogService: DevOps.IHostDialogService) => {
+        DevOps.getService<DevOps.IHostDialogService>(DevOps.CommonServiceIds.HostDialogService).then((dialogService) => {
             dialogService.openCustomDialog<boolean | undefined>(DevOps.getExtensionContext().id + ".panel-content", {
                 title: "Custom dialog",
                 onClose: (result) => {
@@ -134,7 +134,7 @@ export class HubContent extends React.Component<{}, IHubContentState> {
     }
 
     private onPanelClick = (): void => {
-        DevOps.getService("ms.vss-features.host-panel-service").then((panelService: DevOps.IHostPanelService) => {
+        DevOps.getService<DevOps.IHostPanelService>(DevOps.CommonServiceIds.HostPanelService).then((panelService) => {
             panelService.openPanel<boolean | undefined>(DevOps.getExtensionContext().id + ".panel-content", {
                 title: "My Panel",
                 description: "Description of my panel",
