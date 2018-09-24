@@ -1,6 +1,6 @@
 {
   "name": "azure-devops-extension-sample",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sample Azure DevOps web extension",
   "keywords": [
     "extensions",
@@ -8,6 +8,10 @@
     "Visual Studio Team Services"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Microsoft/azure-devops-extension-sample.git"
+  },
   "scripts": {
     "build": "npm run compile",
     "build:prod": "npm run compile:prod",
