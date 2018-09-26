@@ -23,7 +23,6 @@ module.exports = env => {
             filename: path.relative(process.cwd(), path.join(__dirname, "dist", "js", "[name].js"))
         },
         resolve: {
-            alias: { OfficeFabric: "../node_modules/office-ui-fabric-react/lib-amd" },
             extensions: [".ts", ".tsx", ".js"],
         },
         module: {
@@ -34,12 +33,18 @@ module.exports = env => {
                 },
                 {
                     test: /\.scss$/,
-                    use:['style-loader','css-loader', 'sass-loader']
+                    use: ["style-loader", "css-loader", "sass-loader"]
                 },
                 {
                     test: /\.css$/,
                     use: ["style-loader", "css-loader"],
                 },
+                {
+                    test: /\.woff$/,
+                    use: [{
+                        loader: 'base64-inline-loader'
+                    }]
+                }
             ],
         },
         plugins: plugins,

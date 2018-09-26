@@ -1,6 +1,10 @@
 import * as React from "react";
 import * as DevOps from "azure-devops-extension-sdk";
 
+import { Button } from "vss-ui/Button";
+import { PickListDropdown } from "vss-ui/PickList";
+import { IHeaderCommandBarItem, Page, Header, TitleSize } from "vss-ui/Page";
+
 import "./HubContent.scss";
 
 export interface IHubContentState {
@@ -31,7 +35,7 @@ export class HubContent extends React.Component<{}, IHubContentState> {
 
         DevOps.ready(() => {
 
-            const userName = DevOps.getUser().name;
+            const userName = DevOps.getUser().displayName;
             this.setState({ userName });
 
             DevOps.getService<DevOps.IProjectPageService>(DevOps.CommonServiceIds.ProjectPageService).then((projectService) => {
@@ -60,27 +64,65 @@ export class HubContent extends React.Component<{}, IHubContentState> {
         const { userName, projectName, iframeUrl, extensionData } = this.state;
 
         return (
-            <div>
-                <h1>Hello, {userName}!</h1>
-                {
-                    projectName &&
-                    <h2>Project: {projectName}</h2>
-                }
+            <Page className="simple-page">
+
+                <Header title="Sample Page"
+                    commandBarItems={this.getCommandBarItems()}
+                    titleSize={TitleSize.Medium} />
+
+                <div className="page-content">
+                    <h1>Hello, {userName}!</h1>
+                    {
+                        projectName &&
+                        <h2>Project: {projectName}</h2>
+                    }
+                    
+                    <h2>iframe URL: {iframeUrl}</h2>
                 
-                <h2>iframe URL: {iframeUrl}</h2>
-            
-                <button onClick={this.onURLHashTestClick}>URL hash test</button>
-                
-                {
-                    extensionData &&
-                    <h3>Extension data: {extensionData}</h3>
-                }
-                
-                <button onClick={this.onMessagePromptClick}>Message prompt</button>
-                <button onClick={this.onCustomPromptClick}>Custom prompt</button>
-                <button onClick={this.onPanelClick}>Panel</button>
-            </div>
+                    <Button onClick={this.onURLHashTestClick} text="URL hash test" />
+                    
+                    <PickListDropdown initiallySelectedItems={['Option 1']} getPickListItems={() => { return ['Option 1', 'Option 2', 'Option 3'] }} />
+
+                    {
+                        extensionData &&
+                        <h3>Extension data: {extensionData}</h3>
+                    }
+                </div>
+            </Page>
         );
+    }
+
+    private getCommandBarItems(): IHeaderCommandBarItem[] {
+        return [
+            {
+              key: "panel",
+              name: "Panel",
+              onClick: this.onPanelClick,
+              iconProps: {
+                iconName: 'Add'
+              },
+              isPrimary: true,
+              tooltipProps: {
+                content: "Open a panel with custom extension content"
+              }
+            },
+            {
+              key: "messageDialog",
+              name: "Message",
+              onClick: this.onMessagePromptClick,
+              tooltipProps: {
+                content: "Open a simple message dialog"
+              }
+            },
+            {
+              key: "customDialog",
+              name: "Custom Dialog",
+              onClick: this.onCustomPromptClick,
+              tooltipProps: {
+                content: "Open a dialog with custom extension content"
+              }
+            }
+        ];
     }
 
     private showMessageBanner(level: DevOps.MessageBannerLevel, messageFormat: string, messageLinks?: DevOps.IGlobalMessageLink[]) {
