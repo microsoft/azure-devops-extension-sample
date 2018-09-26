@@ -28,7 +28,7 @@
     "es6-promise": "^4.2.5",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "vss-ui": "^4.141.1"
+    "vss-ui": "^4.141.2"
   },
   "devDependencies": {
     "@types/react": "^16.3.2",
