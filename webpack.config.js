@@ -17,7 +17,8 @@ module.exports = env => {
     }
     return {
         entry: {
-            hub: "./" + path.relative(process.cwd(), path.join(__dirname, "src/Hub/hub"))
+            hub: "./" + path.relative(process.cwd(), path.join(__dirname, "src/Hub/Hub")),
+            panel: "./" + path.relative(process.cwd(), path.join(__dirname, "src/Panel/Panel"))
         },
         output: {
             filename: path.relative(process.cwd(), path.join(__dirname, "dist", "js", "[name].js"))
@@ -33,7 +34,12 @@ module.exports = env => {
                 },
                 {
                     test: /\.scss$/,
-                    use: ["style-loader", "css-loader", "sass-loader"]
+                    use: ["style-loader", "css-loader", {
+                        loader: "sass-loader",
+                        options: {
+                            includePaths: [path.join(__dirname, "node_modules/vss-ui/Core")]
+                        }
+                    }]
                 },
                 {
                     test: /\.css$/,

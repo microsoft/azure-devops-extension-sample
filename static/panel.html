@@ -1,46 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <script src="../sdk/DevOps.SDK.js"></script>
-    <style>
-        body {
-            margin: 0;
-        }
-    </style>
-    <script type="text/javascript">
-        DevOps.init({ applyTheme: true, loaded: false });
-        DevOps.ready(function() {
-            document.getElementById("btnOK").addEventListener("click", function() {
-                var config = DevOps.getConfiguration();
-                if (config.dialog) {
-                    config.dialog.close(true);
-                }
-                else {
-                    config.panel.close(true);
-                }
-            });
-            
-            document.getElementById("btnCancel").addEventListener("click", function() {
-                var config = DevOps.getConfiguration();
-                if (config.dialog) {
-                    config.dialog.close(false);
-                }
-                else {
-                    config.panel.close(false);
-                }
-            });
-
-            DevOps.notifyLoadSucceeded().then(function() {
-                DevOps.resize();
-            });
-        });
-    </script>
-</head>
-<body>
-    <div>My custom panel/dialog content</div>
-    <div id="dialogButtonPane">
-        <button id="btnOK">OK</button>
-        <button id="btnCancel">Cancel</button>
-    </div>
-</body>
+    <body>
+        <div id="root"></div>
+        <script type="text/javascript" src="../dist/js/panel.js"></script>
+    </body>
 </html>
