@@ -18,7 +18,8 @@ module.exports = env => {
     return {
         entry: {
             hub: "./" + path.relative(process.cwd(), path.join(__dirname, "src/Hub/Hub")),
-            panel: "./" + path.relative(process.cwd(), path.join(__dirname, "src/Panel/Panel"))
+            panel: "./" + path.relative(process.cwd(), path.join(__dirname, "src/Panel/Panel")),
+            menu: "./" + path.relative(process.cwd(), path.join(__dirname, "src/Menu/Menu"))
         },
         output: {
             filename: path.relative(process.cwd(), path.join(__dirname, "dist", "js", "[name].js"))
