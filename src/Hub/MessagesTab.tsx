@@ -43,7 +43,7 @@ export class MessagesTab extends React.Component<{}, IMessagesTabState> {
                     }}
                     onSelectionChanged={this.onMessageLevelChanged}
                 />
-                <Button className="sample-button-left-margin" onClick={this.showMessageBanner} text="Show banner" />
+                <Button className="sample-button sample-button-left-margin" onClick={this.showMessageBanner} text="Show banner" />
             </div>
         );
     }

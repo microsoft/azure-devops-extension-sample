@@ -25,9 +25,9 @@ export class NavigationTab extends React.Component<{}, INavigationTabState> {
                     <div className="sample-hub-section">Current hash: {currentHash}</div>
                 }
                 <div className="sample-hub-section">
-                    <Button text="Get Hash" primary={true} onClick={this.onGetHashClick} />
-                    <Button className="sample-button-left-margin" text="Update hash" onClick={this.onUpdateHashClick} />
-                    <Button className="sample-button-left-margin" text="Update document title" onClick={this.onUpdateDocumentTitle} />
+                    <Button className="sample-button" text="Get Hash" primary={true} onClick={this.onGetHashClick} />
+                    <Button className="sample-button sample-button-left-margin" text="Update hash" onClick={this.onUpdateHashClick} />
+                    <Button className="sample-button sample-button-left-margin" text="Update document title" onClick={this.onUpdateDocumentTitle} />
                 </div>
             </>
         );

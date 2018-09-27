@@ -43,12 +43,13 @@ class PanelContent extends React.Component<{}, IPanelContentState> {
                 </div>
                 <div className="sample-panel-button-bar">
                     <Button
+                        className="sample-button"
                         primary={true}
                         text="OK"
                         onClick={() => this.dismiss(true)}
                     />
                     <Button
-                        className="sample-button-left-margin"
+                        className="sample-button sample-button-left-margin"
                         text="Cancel"
                         onClick={() => this.dismiss(false)}
                     />
