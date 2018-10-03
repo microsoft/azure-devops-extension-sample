@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "samples",
     "publisher": "ms-samples",
-    "version": "1.0.83",
+    "version": "1.0.89",
     "name": "Extension Sample",
     "description": "Azure DevOps extension sample",
     "categories": [
@@ -55,6 +55,9 @@
     "icons": {
         "default": "logo.png"
     },
+    "scopes": [
+        "vso.build"
+    ],
     "content": {
         "details": {
             "path": "overview.md"

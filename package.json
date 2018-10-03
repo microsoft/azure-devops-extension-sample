@@ -1,6 +1,6 @@
 {
   "name": "azure-devops-extension-sample",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Sample Azure DevOps web extension",
   "keywords": [
     "extensions",
@@ -24,7 +24,8 @@
     "clean": "rimraf ./dist && rimraf ./*.vsix"
   },
   "dependencies": {
-    "azure-devops-extension-sdk": "^1.141.6",
+    "azure-devops-extension-sdk": "^1.141.9",
+    "azure-devops-extension-api": "0.141.5",
     "es6-promise": "^4.2.5",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
