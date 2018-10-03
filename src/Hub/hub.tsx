@@ -30,10 +30,7 @@ class HubContent extends React.Component<{}, IHubContentState> {
     }
 
     public componentDidMount() {
-        DevOps.init({
-            applyTheme: true,
-            loaded: true
-        });
+        DevOps.init();
     }
 
     public render(): JSX.Element {

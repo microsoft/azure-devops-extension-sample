@@ -21,10 +21,7 @@ class PanelContent extends React.Component<{}, IPanelContentState> {
     }
 
     public componentDidMount() {
-        DevOps.init({
-            applyTheme: true,
-            loaded: true
-        });
+        DevOps.init();
 
         DevOps.ready(() => {
             const message = DevOps.getConfiguration().message || "Custom dialog message";

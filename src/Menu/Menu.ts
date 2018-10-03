@@ -18,4 +18,4 @@ DevOps.register("sample-build-menu", () => {
     }
 });
 
-DevOps.init({ loaded: true });
+DevOps.init();
