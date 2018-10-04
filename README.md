@@ -1,15 +1,7 @@
 # Azure DevOps Web Sample Extension
 
-Full API reference of DevOps.SDK.js can be found at [Core Client SDK](https://docs.microsoft.com/en-us/azure/devops/extend/reference/client/core-sdk) page.
+Full API reference of DevOps.SDK can be found at [Core Client SDK](https://docs.microsoft.com/en-us/azure/devops/extend/reference/client/core-sdk) page.
 
-1. After compiling (`tsc -p .`), resulting .js files are placed in `dist`. For example, `dist/app.js`.
-
-2. If your code directly uses types from other @types modules, you will want to include the module(s) in your package.json and add them to the `types` array. See [@types](http://www.typescriptlang.org/docs/handbook/tsconfig-json.html).
-
-
-`scripts` provides a convenient way to define common operations that you want to perform on your project, like compiling and packaging. 
-   * For example, to build (compile) and package your extension, run: `npm run build`. This runs `build` and `postbuild`. If you make a change that doesn't require compiling, you can package by simply running `npm run package`.
-   * To package and publish directly to the Marketplace on build, change the `postbuild` script to run the `gallery-publish` script (instead of `package`). You can then run `npm run build -- --token xxxxxx` (where xxxx is you personal access token for publishing to the Marketplace) to build, package, and publish your extension.
 
 # Contributing
 

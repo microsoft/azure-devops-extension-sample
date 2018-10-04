@@ -17,25 +17,28 @@
     "build:prod": "npm run compile:prod",
     "compile": "webpack",
     "compile:prod": "webpack --env=production",
+    "prep": "cpx ./src/Pages/**/*.html ./dist/",
     "postbuild": "npm run package",
     "postbuild:prod": "npm run package",
-    "package": "tfx extension create --rev-version",
-    "gallery-publish": "tfx extension publish --rev-version",
+    "package": "npm run prep && tfx extension create --rev-version --manifest-globs extension.json src/Pages/**/*.json",
+    "gallery-publish": "tfx extension publish",
     "clean": "rimraf ./dist && rimraf ./*.vsix"
   },
   "dependencies": {
-    "azure-devops-extension-sdk": "^1.141.11",
-    "azure-devops-extension-api": "0.141.7",
+    "azure-devops-extension-sdk": "~1.141.11",
+    "azure-devops-extension-api": "~0.141.8",
     "es6-promise": "^4.2.5",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "vss-ui": "^4.141.3"
+    "vss-ui": "~4.141.3"
   },
   "devDependencies": {
     "@types/react": "^16.3.2",
     "@types/react-dom": "^16.0.7",
+    "cpx": "1.5.0",
     "css-loader": "~0.28.7",
     "base64-inline-loader": "^1.1.1",
+    "file-loader": "2.0.0",
     "node-sass": "^4.0.0",
     "rimraf": "^2.5.4",
     "sass-loader": "~6.0.6",

@@ -1,5 +1,17 @@
 const path = require("path");
 const webpack = require("webpack");
+const fs = require("fs");
+
+// Webpack entry points. Mapping from resulting bundle name to the source file entry.
+const entries = {};
+
+// Loop through subfolders in the "Pages" folder and add an entry for each one
+const pagesDir = path.join(__dirname, "src/Pages");
+fs.readdirSync(pagesDir).filter(dir => {
+    if (fs.statSync(path.join(pagesDir, dir)).isDirectory()) {
+        entries[dir] = "./" + path.relative(process.cwd(), path.join(pagesDir, dir, dir));
+    }
+});
 
 module.exports = env => {
     const plugins = [];
@@ -16,13 +28,9 @@ module.exports = env => {
         );
     }
     return {
-        entry: {
-            hub: "./" + path.relative(process.cwd(), path.join(__dirname, "src/Hub/Hub")),
-            panel: "./" + path.relative(process.cwd(), path.join(__dirname, "src/Panel/Panel")),
-            menu: "./" + path.relative(process.cwd(), path.join(__dirname, "src/Menu/Menu"))
-        },
+        entry: entries,
         output: {
-            filename: path.relative(process.cwd(), path.join(__dirname, "dist", "js", "[name].js"))
+            filename: path.relative(process.cwd(), path.join(__dirname, "dist", "[name]", "[name].js"))
         },
         resolve: {
             extensions: [".ts", ".tsx", ".js"],
@@ -51,6 +59,10 @@ module.exports = env => {
                     use: [{
                         loader: 'base64-inline-loader'
                     }]
+                },
+                {
+                    test: /\.html$/,
+                    loader: "file-loader"
                 }
             ],
         },

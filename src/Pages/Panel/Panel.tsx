@@ -5,7 +5,7 @@ import * as DevOps from "azure-devops-extension-sdk";
 
 import { Button } from "vss-ui/Button";
 import { Toggle } from "vss-ui/Toggle";
-import { showRootComponent } from "../Common";
+import { showRootComponent } from "../../Common";
 
 interface IPanelContentState {
     message?: string;
