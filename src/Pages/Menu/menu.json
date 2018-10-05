@@ -8,7 +8,7 @@
             ],
             "properties": {
                 "text": "Sample build definition menu item",
-                "uri": "dist/Menu/menu.html",
+                "uri": "dist/Menu/Menu.html",
                 "icon": "static/sample-icon.png",
                 "registeredObjectId": "sample-build-menu"
             }

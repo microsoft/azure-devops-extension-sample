@@ -4,7 +4,7 @@
             "id": "panel-content",
             "type": "ms.vss-web.external-content",
             "properties": {
-                "uri": "dist/Panel/panel.html"
+                "uri": "dist/Panel/Panel.html"
             }
         }
     ]
