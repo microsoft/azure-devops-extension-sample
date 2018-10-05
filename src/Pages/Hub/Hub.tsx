@@ -1,7 +1,8 @@
 import "./Hub.scss";
 
 import * as React from "react";
-import * as DevOps from "azure-devops-extension-sdk";
+import * as SDK from "azure-devops-extension-sdk/SDK";
+import { CommonServiceIds, IHostDialogService, IHostPanelService } from "azure-devops-extension-api/extensions/CommonServices";
 
 import { Header, IHeaderCommandBarItem, Page, TitleSize } from "vss-ui/Page";
 import { Tab, TabBar, TabSize } from "vss-ui/Tabs";
@@ -30,7 +31,7 @@ class HubContent extends React.Component<{}, IHubContentState> {
     }
 
     public componentDidMount() {
-        DevOps.init();
+        SDK.init();
     }
 
     public render(): JSX.Element {
@@ -90,7 +91,7 @@ class HubContent extends React.Component<{}, IHubContentState> {
             {
               key: "panel",
               name: "Panel",
-              onClick: this.onPanelClick,
+              onClick: () => { this.onPanelClick() },
               iconProps: {
                 iconName: 'Add'
               },
@@ -102,7 +103,7 @@ class HubContent extends React.Component<{}, IHubContentState> {
             {
               key: "messageDialog",
               name: "Message",
-              onClick: this.onMessagePromptClick,
+              onClick: () => { this.onMessagePromptClick() },
               tooltipProps: {
                 content: "Open a simple message dialog"
               }
@@ -110,7 +111,7 @@ class HubContent extends React.Component<{}, IHubContentState> {
             {
               key: "customDialog",
               name: "Custom Dialog",
-              onClick: this.onCustomPromptClick,
+              onClick: () => { this.onCustomPromptClick() },
               tooltipProps: {
                 content: "Open a dialog with custom extension content"
               }
@@ -118,50 +119,47 @@ class HubContent extends React.Component<{}, IHubContentState> {
         ];
     }
 
-    private onMessagePromptClick = (): void => {
-        DevOps.getService<DevOps.IHostDialogService>(DevOps.CommonServiceIds.HostDialogService).then((dialogService) => {
-            dialogService.openMessageDialog("Use large title?", {
-                showCancel: true,
-                title: "Message dialog",
-                onClose: (result) => {
-                    this.setState({ useLargeTitle: result });
-                }
-            });
+    private async onMessagePromptClick(): Promise<void> {
+        const dialogService = await SDK.getService<IHostDialogService>(CommonServiceIds.HostDialogService);
+        dialogService.openMessageDialog("Use large title?", {
+            showCancel: true,
+            title: "Message dialog",
+            onClose: (result) => {
+                this.setState({ useLargeTitle: result });
+            }
         });
     }
 
-    private onCustomPromptClick = (): void => {
-        DevOps.getService<DevOps.IHostDialogService>(DevOps.CommonServiceIds.HostDialogService).then((dialogService) => {
-            dialogService.openCustomDialog<boolean | undefined>(DevOps.getExtensionContext().id + ".panel-content", {
-                title: "Custom dialog",
-                configuration: {
-                    message: "Use compact pivots?",
-                    initialValue: this.state.useCompactPivots
-                },
-                onClose: (result) => {
-                    if (result !== undefined) {
-                        this.setState({ useCompactPivots: result });
-                    }
+    private async onCustomPromptClick(): Promise<void> {
+        const dialogService = await SDK.getService<IHostDialogService>(CommonServiceIds.HostDialogService);
+        dialogService.openCustomDialog<boolean | undefined>(SDK.getExtensionContext()!.id + ".panel-content", {
+            title: "Custom dialog",
+            configuration: {
+                message: "Use compact pivots?",
+                initialValue: this.state.useCompactPivots
+            },
+            onClose: (result) => {
+                if (result !== undefined) {
+                    this.setState({ useCompactPivots: result });
                 }
-            });
+            }
         });
     }
 
-    private onPanelClick = (): void => {
-        DevOps.getService<DevOps.IHostPanelService>(DevOps.CommonServiceIds.HostPanelService).then((panelService) => {
-            panelService.openPanel<boolean | undefined>(DevOps.getExtensionContext().id + ".panel-content", {
-                title: "My Panel",
-                description: "Description of my panel",
-                configuration: {
-                    message: "Show header kicker?",
-                    initialValue: !!this.state.headerKicker
-                },
-                onClose: (result) => {
-                    if (result !== undefined) {
-                        this.setState({ headerKicker: result ? "This is a kicker" : undefined });
-                    }
+    private async onPanelClick(): Promise<void> {
+        const panelService = await SDK.getService<IHostPanelService>(CommonServiceIds.HostPanelService);
+        panelService.openPanel<boolean | undefined>(SDK.getExtensionContext()!.id + ".panel-content", {
+            title: "My Panel",
+            description: "Description of my panel",
+            configuration: {
+                message: "Show header kicker?",
+                initialValue: !!this.state.headerKicker
+            },
+            onClose: (result) => {
+                if (result !== undefined) {
+                    this.setState({ headerKicker: result ? "This is a kicker" : undefined });
                 }
-            });
+            }
         });
     }
 }

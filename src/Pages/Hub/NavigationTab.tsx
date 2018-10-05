@@ -1,5 +1,6 @@
 import * as React from "react";
-import * as DevOps from "azure-devops-extension-sdk";
+import * as SDK from "azure-devops-extension-sdk/SDK";
+import { CommonServiceIds, IHostNavigationService } from "azure-devops-extension-api/extensions/CommonServices";
 
 import { Button } from "vss-ui/Button";
 
@@ -33,25 +34,19 @@ export class NavigationTab extends React.Component<{}, INavigationTabState> {
         );
     }
 
-    private onGetHashClick = (): void => {
-        DevOps.getService<DevOps.IHostNavigationService>(DevOps.CommonServiceIds.HostNavigationService).then((navService) => {
-            navService.getHash().then((hash) => {
-                this.setState({ currentHash: hash });
-            });
-        });
+    private onGetHashClick = async (): Promise<void> => {
+        const navService = await SDK.getService<IHostNavigationService>(CommonServiceIds.HostNavigationService);
+        const hash = await navService.getHash();
+        this.setState({ currentHash: hash });
     }
 
-    private onUpdateHashClick = (): void => {
-        DevOps.getService<DevOps.IHostNavigationService>(DevOps.CommonServiceIds.HostNavigationService).then((navService) => {
-            var time = new Date().getTime() + "";
-            navService.setHash("time=" + time);
-        });
+    private onUpdateHashClick = async (): Promise<void> => {
+        const navService = await SDK.getService<IHostNavigationService>(CommonServiceIds.HostNavigationService);
+        navService.setHash("time=" + new Date().getTime());
     }
 
-    private onUpdateDocumentTitle = (): void => {
-        DevOps.getService<DevOps.IHostNavigationService>(DevOps.CommonServiceIds.HostNavigationService).then((navService) => {
-            var time = new Date().getTime() + "";
-            navService.setDocumentTitle("Sample hub new title: " + time);
-        });
+    private onUpdateDocumentTitle = async (): Promise<void> => {
+        const navService = await SDK.getService<IHostNavigationService>(CommonServiceIds.HostNavigationService);
+        navService.setDocumentTitle("Sample hub new title: " + new Date().getTime());
     }
 }

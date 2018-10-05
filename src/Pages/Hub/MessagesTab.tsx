@@ -1,11 +1,12 @@
 import * as React from "react";
-import * as DevOps from "azure-devops-extension-sdk";
+import * as SDK from "azure-devops-extension-sdk/SDK";
+import { CommonServiceIds, IGlobalMessagesService, MessageBannerLevel } from "azure-devops-extension-api/extensions/CommonServices";
 
 import { Button } from "vss-ui/Button";
 import { IPickListSelection, PickListDropdown } from "vss-ui/PickList";
 
 export interface IMessagesTabState {
-    messageLevel?: DevOps.MessageBannerLevel;
+    messageLevel?: MessageBannerLevel;
 }
 
 export class MessagesTab extends React.Component<{}, IMessagesTabState> {
@@ -14,7 +15,7 @@ export class MessagesTab extends React.Component<{}, IMessagesTabState> {
         super(props);
 
         this.state = {
-            messageLevel: DevOps.MessageBannerLevel.info
+            messageLevel: MessageBannerLevel.info
         };
     }
 
@@ -26,13 +27,13 @@ export class MessagesTab extends React.Component<{}, IMessagesTabState> {
                 <PickListDropdown
                     id="message-level-picker"
                     className="sample-picker"
-                    initiallySelectedItems={[{ value: DevOps.MessageBannerLevel.info, name: "Info"}]}
+                    initiallySelectedItems={[{ value: MessageBannerLevel.info, name: "Info"}]}
                     getPickListItems={() => {
                         return [
-                            { value: DevOps.MessageBannerLevel.info, name: "Info"},
-                            { value: DevOps.MessageBannerLevel.error, name: "Error"},
-                            { value: DevOps.MessageBannerLevel.warning, name: "Warning"},
-                            { value: DevOps.MessageBannerLevel.success, name: "Success"}
+                            { value: MessageBannerLevel.info, name: "Info"},
+                            { value: MessageBannerLevel.error, name: "Error"},
+                            { value: MessageBannerLevel.warning, name: "Warning"},
+                            { value: MessageBannerLevel.success, name: "Success"}
                         ]
                     }}
                     getListItem={(item) => {
@@ -54,19 +55,18 @@ export class MessagesTab extends React.Component<{}, IMessagesTabState> {
         }
     }
 
-    private showMessageBanner = (): void => {
+    private showMessageBanner = async (): Promise<void> => {
 
         const { messageLevel } = this.state;
 
-        DevOps.getService<DevOps.IGlobalMessagesService>(DevOps.CommonServiceIds.GlobalMessagesService).then((globalMessagesSvc) => {
-            globalMessagesSvc.setGlobalMessageBanner({
-                level: messageLevel,
-                messageFormat: "This is a message from the sample extension. {0}",
-                messageLinks: [{
-                    name: "Learn more",
-                    href: "https://docs.microsoft.com/en-us/azure/devops/extend/get-started/node"
-                }]
-            });
+        const globalMessagesSvc = await SDK.getService<IGlobalMessagesService>(CommonServiceIds.GlobalMessagesService);
+        globalMessagesSvc.setGlobalMessageBanner({
+            level: messageLevel,
+            messageFormat: "This is a message from the sample extension. {0}",
+            messageLinks: [{
+                name: "Learn more",
+                href: "https://docs.microsoft.com/en-us/azure/devops/extend/get-started/node"
+            }]
         });
     }
 }

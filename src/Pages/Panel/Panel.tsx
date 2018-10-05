@@ -1,7 +1,7 @@
 import "./Panel.scss";
 
 import * as React from "react";
-import * as DevOps from "azure-devops-extension-sdk";
+import * as SDK from "azure-devops-extension-sdk/SDK";
 
 import { Button } from "vss-ui/Button";
 import { Toggle } from "vss-ui/Toggle";
@@ -21,11 +21,12 @@ class PanelContent extends React.Component<{}, IPanelContentState> {
     }
 
     public componentDidMount() {
-        DevOps.init();
+        SDK.init();
 
-        DevOps.ready(() => {
-            const message = DevOps.getConfiguration().message || "Custom dialog message";
-            const toggleValue = !!DevOps.getConfiguration().initialValue;
+        SDK.ready().then(() => {
+            const config = SDK.getConfiguration()!;
+            const message = config.message || "Custom dialog message";
+            const toggleValue = !!config.initialValue;
             this.setState({ message, toggleValue, ready: true });
         });
     }
@@ -57,7 +58,7 @@ class PanelContent extends React.Component<{}, IPanelContentState> {
 
     private dismiss(useValue: boolean) {
         const result = useValue ? this.state.toggleValue : undefined;
-        const config = DevOps.getConfiguration();
+        const config = SDK.getConfiguration()!;
         if (config.dialog) {
             config.dialog.close(result);
         }

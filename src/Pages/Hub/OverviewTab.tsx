@@ -1,5 +1,6 @@
 import * as React from "react";
-import * as DevOps from "azure-devops-extension-sdk";
+import * as SDK from "azure-devops-extension-sdk/SDK";
+import { CommonServiceIds, IProjectPageService } from "azure-devops-extension-api/extensions/CommonServices";
 
 export interface IOverviewTabState {
     userName?: string;
@@ -19,18 +20,20 @@ export class OverviewTab extends React.Component<{}, IOverviewTabState> {
     }
 
     public componentDidMount() {
-        DevOps.ready(() => {
-            const userName = DevOps.getUser().displayName;
-            this.setState({ userName });
+        this.initializeState();
+    }
 
-            DevOps.getService<DevOps.IProjectPageService>(DevOps.CommonServiceIds.ProjectPageService).then((projectService) => {
-                projectService.getProject().then((project) => {
-                    if (project) {
-                        this.setState({ projectName: project.name });
-                    }
-                });
-            });
-        });
+    private async initializeState(): Promise<void> {
+        await SDK.ready();
+        
+        const userName = SDK.getUser()!.displayName;
+        this.setState({ userName });
+
+        const projectService = await SDK.getService<IProjectPageService>(CommonServiceIds.ProjectPageService);
+        const project = await projectService.getProject();
+        if (project) {
+            this.setState({ projectName: project.name });
+        }
     }
 
     public render(): JSX.Element {
