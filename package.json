@@ -15,8 +15,9 @@
   "scripts": {
     "build": "npm run compile",
     "build:prod": "npm run compile:prod",
-    "compile": "webpack",
-    "compile:prod": "webpack --env=production",
+    "clean-dist": "rimraf ./dist",
+    "compile": "npm run clean-dist && webpack",
+    "compile:prod": "npm run clean-dist && webpack --env=production",
     "prep": "cpx ./src/Pages/**/*.html ./dist/",
     "postbuild": "npm run package",
     "postbuild:prod": "npm run package",
