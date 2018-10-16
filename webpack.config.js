@@ -43,12 +43,7 @@ module.exports = env => {
                 },
                 {
                     test: /\.scss$/,
-                    use: ["style-loader", "css-loader", {
-                        loader: "sass-loader",
-                        options: {
-                            includePaths: [path.join(__dirname, "node_modules/vss-ui/Core")]
-                        }
-                    }]
+                    use: ["style-loader", "css-loader", "vss-ui/buildScripts/css-variables-loader", "sass-loader"]
                 },
                 {
                     test: /\.css$/,
