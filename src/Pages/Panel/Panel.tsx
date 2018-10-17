@@ -1,7 +1,7 @@
 import "./Panel.scss";
 
 import * as React from "react";
-import * as SDK from "azure-devops-extension-sdk/SDK";
+import * as SDK from "azure-devops-extension-sdk";
 
 import { Button } from "vss-ui/Button";
 import { Toggle } from "vss-ui/Toggle";

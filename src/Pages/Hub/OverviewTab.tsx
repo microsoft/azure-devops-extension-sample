@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as SDK from "azure-devops-extension-sdk/SDK";
+import * as SDK from "azure-devops-extension-sdk";
 import { CommonServiceIds, IProjectPageService } from "azure-devops-extension-api/extensions/CommonServices";
 
 export interface IOverviewTabState {

@@ -1,5 +1,5 @@
 import "es6-promise/auto";
-import * as SDK from "azure-devops-extension-sdk/SDK";
+import * as SDK from "azure-devops-extension-sdk";
 import { CommonServiceIds, IHostDialogService } from "azure-devops-extension-api/extensions/CommonServices";
 
 import { getClient } from "azure-devops-extension-api/extensions/Client";

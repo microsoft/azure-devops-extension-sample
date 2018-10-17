@@ -26,8 +26,8 @@
     "clean": "rimraf ./dist && rimraf ./*.vsix"
   },
   "dependencies": {
-    "azure-devops-extension-sdk": "~1.141.13",
-    "azure-devops-extension-api": "~0.141.10",
+    "azure-devops-extension-sdk": "~1.141.14",
+    "azure-devops-extension-api": "~0.141.13",
     "es6-promise": "^4.2.5",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
