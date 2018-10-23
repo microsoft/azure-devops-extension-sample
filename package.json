@@ -16,9 +16,9 @@
     "build": "npm run compile",
     "build:prod": "npm run compile:prod",
     "clean-dist": "rimraf ./dist",
-    "compile": "npm run clean-dist && webpack",
-    "compile:prod": "npm run clean-dist && webpack --env=production",
-    "prep": "cpx ./src/Pages/**/*.html ./dist/",
+    "compile": "npm run clean-dist && webpack --config webpack.dev.js",
+    "compile:prod": "npm run clean-dist && webpack --config webpack.prod.js",
+    "prep": "cpx \"./src/Pages/**/*.html\" ./dist/",
     "postbuild": "npm run package",
     "postbuild:prod": "npm run package",
     "package": "npm run prep && tfx extension create --rev-version --manifest-globs extension.json src/Pages/**/*.json",
@@ -26,7 +26,7 @@
     "clean": "rimraf ./dist && rimraf ./*.vsix"
   },
   "dependencies": {
-    "azure-devops-extension-sdk": "~1.141.14",
+    "azure-devops-extension-sdk": "~2.0.0",
     "azure-devops-extension-api": "~0.141.13",
     "es6-promise": "^4.2.5",
     "react": "^16.3.2",
@@ -36,17 +36,19 @@
   "devDependencies": {
     "@types/react": "^16.3.2",
     "@types/react-dom": "^16.0.7",
-    "cpx": "1.5.0",
-    "css-loader": "~0.28.7",
     "base64-inline-loader": "^1.1.1",
-    "file-loader": "2.0.0",
-    "node-sass": "^4.0.0",
-    "rimraf": "^2.5.4",
-    "sass-loader": "~6.0.6",
-    "style-loader": "~0.19.0",
+    "cpx": "~1.5.0",
+    "css-loader": "~1.0.0",
+    "file-loader": "~2.0.0",
+    "node-sass": "~4.9.4",
+    "rimraf": "~2.6.2",
+    "sass-loader": "~7.1.0",
+    "style-loader": "~0.23.1",
     "tfx-cli": "^0.6.3",
-    "ts-loader": "~3.0.3",
+    "ts-loader": "~5.2.2",
     "typescript": "^2.9.2",
-    "webpack": "~3.8.1"
+    "webpack": "^4.22.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-merge": "^4.1.4"
   }
 }
