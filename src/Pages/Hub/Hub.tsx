@@ -132,7 +132,7 @@ class HubContent extends React.Component<{}, IHubContentState> {
 
     private async onCustomPromptClick(): Promise<void> {
         const dialogService = await SDK.getService<IHostDialogService>(CommonServiceIds.HostDialogService);
-        dialogService.openCustomDialog<boolean | undefined>(SDK.getExtensionContext()!.id + ".panel-content", {
+        dialogService.openCustomDialog<boolean | undefined>(SDK.getExtensionContext().id + ".panel-content", {
             title: "Custom dialog",
             configuration: {
                 message: "Use compact pivots?",
@@ -148,7 +148,7 @@ class HubContent extends React.Component<{}, IHubContentState> {
 
     private async onPanelClick(): Promise<void> {
         const panelService = await SDK.getService<IHostPanelService>(CommonServiceIds.HostPanelService);
-        panelService.openPanel<boolean | undefined>(SDK.getExtensionContext()!.id + ".panel-content", {
+        panelService.openPanel<boolean | undefined>(SDK.getExtensionContext().id + ".panel-content", {
             title: "My Panel",
             description: "Description of my panel",
             configuration: {

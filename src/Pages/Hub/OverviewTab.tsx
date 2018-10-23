@@ -26,7 +26,7 @@ export class OverviewTab extends React.Component<{}, IOverviewTabState> {
     private async initializeState(): Promise<void> {
         await SDK.ready();
         
-        const userName = SDK.getUser()!.displayName;
+        const userName = SDK.getUser().displayName;
         this.setState({ userName });
 
         const projectService = await SDK.getService<IProjectPageService>(CommonServiceIds.ProjectPageService);

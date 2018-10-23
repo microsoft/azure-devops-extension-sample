@@ -28,7 +28,7 @@ export class ExtensionDataTab extends React.Component<{}, IExtensionDataState> {
         await SDK.ready();
         const accessToken = await SDK.getAccessToken();
         const extDataService = await SDK.getService<IExtensionDataService>(CommonServiceIds.ExtensionDataService);
-        this._dataManager = await extDataService.getExtensionDataManager(SDK.getExtensionContext()!.id, accessToken);
+        this._dataManager = await extDataService.getExtensionDataManager(SDK.getExtensionContext().id, accessToken);
 
         this._dataManager.getValue<string>("test-id").then((data) => {
             this.setState({

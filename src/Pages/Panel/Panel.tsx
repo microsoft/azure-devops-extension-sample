@@ -24,7 +24,7 @@ class PanelContent extends React.Component<{}, IPanelContentState> {
         SDK.init();
 
         SDK.ready().then(() => {
-            const config = SDK.getConfiguration()!;
+            const config = SDK.getConfiguration();
             const message = config.message || "Custom dialog message";
             const toggleValue = !!config.initialValue;
             this.setState({ message, toggleValue, ready: true });
@@ -58,7 +58,7 @@ class PanelContent extends React.Component<{}, IPanelContentState> {
 
     private dismiss(useValue: boolean) {
         const result = useValue ? this.state.toggleValue : undefined;
-        const config = SDK.getConfiguration()!;
+        const config = SDK.getConfiguration();
         if (config.dialog) {
             config.dialog.close(result);
         }
