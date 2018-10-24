@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 // Webpack entry points. Mapping from resulting bundle name to the source file entry.
 const entries = {};
@@ -47,6 +48,9 @@ module.exports = {
                 test: /\.html$/,
                 loader: "file-loader"
             }
-        ],
-    }
+        ]
+    },
+    plugins: [
+        new CopyWebpackPlugin([ { from: "**/*.html", context: "src/Pages" }])
+    ]
 };
