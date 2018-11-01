@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as SDK from "azure-devops-extension-sdk";
-import { CommonServiceIds, IGlobalMessagesService, MessageBannerLevel } from "azure-devops-extension-api/extensions/CommonServices";
+import { CommonServiceIds, IGlobalMessagesService, MessageBannerLevel } from "azure-devops-extension-api";
 
 import { Button } from "vss-ui/Button";
 import { IPickListSelection, PickListDropdown } from "vss-ui/PickList";

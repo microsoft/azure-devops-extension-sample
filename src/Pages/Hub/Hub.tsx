@@ -2,7 +2,7 @@ import "./Hub.scss";
 
 import * as React from "react";
 import * as SDK from "azure-devops-extension-sdk";
-import { CommonServiceIds, IHostDialogService, IHostPanelService } from "azure-devops-extension-api/extensions/CommonServices";
+import { CommonServiceIds, IHostDialogService, IHostPanelService } from "azure-devops-extension-api";
 
 import { Header, IHeaderCommandBarItem, Page, TitleSize } from "vss-ui/Page";
 import { Tab, TabBar, TabSize } from "vss-ui/Tabs";

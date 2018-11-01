@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as SDK from "azure-devops-extension-sdk";
-import { CommonServiceIds, IHostNavigationService } from "azure-devops-extension-api/extensions/CommonServices";
+import { CommonServiceIds, IHostNavigationService } from "azure-devops-extension-api";
 
 import { Button } from "vss-ui/Button";
 

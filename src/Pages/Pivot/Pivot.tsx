@@ -5,9 +5,8 @@ import * as SDK from "azure-devops-extension-sdk";
 
 import { showRootComponent } from "../../Common";
 
-import { getClient } from "azure-devops-extension-api/extensions/Client";
-import { CoreRestClient } from "azure-devops-extension-api/clients/Core";
-import { ProjectVisibility, TeamProjectReference } from "azure-devops-extension-api/types/Core";
+import { getClient } from "azure-devops-extension-api";
+import { CoreRestClient, ProjectVisibility, TeamProjectReference } from "azure-devops-extension-api/Core";
 
 import { VssDetailsList } from "vss-ui/VssDetailsList";
 import { IColumn } from "office-ui-fabric-react/lib/DetailsList";
