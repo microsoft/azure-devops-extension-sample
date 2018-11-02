@@ -4,8 +4,8 @@ import * as React from "react";
 import * as SDK from "azure-devops-extension-sdk";
 import { CommonServiceIds, IHostDialogService, IHostPanelService } from "azure-devops-extension-api";
 
-import { Header, IHeaderCommandBarItem, Page, TitleSize } from "vss-ui/Page";
-import { Tab, TabBar, TabSize } from "vss-ui/Tabs";
+import { Header, IHeaderCommandBarItem, Page, TitleSize } from "azure-devops-ui/Page";
+import { Tab, TabBar, TabSize } from "azure-devops-ui/Tabs";
 
 import { OverviewTab } from "./OverviewTab"; 
 import { NavigationTab } from "./NavigationTab";

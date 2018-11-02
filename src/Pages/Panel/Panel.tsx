@@ -3,8 +3,8 @@ import "./Panel.scss";
 import * as React from "react";
 import * as SDK from "azure-devops-extension-sdk";
 
-import { Button } from "vss-ui/Button";
-import { Toggle } from "vss-ui/Toggle";
+import { Button } from "azure-devops-ui/Button";
+import { Toggle } from "azure-devops-ui/Toggle";
 import { showRootComponent } from "../../Common";
 
 interface IPanelContentState {

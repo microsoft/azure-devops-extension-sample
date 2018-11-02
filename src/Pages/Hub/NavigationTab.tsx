@@ -2,7 +2,7 @@ import * as React from "react";
 import * as SDK from "azure-devops-extension-sdk";
 import { CommonServiceIds, IHostNavigationService } from "azure-devops-extension-api";
 
-import { Button } from "vss-ui/Button";
+import { Button } from "azure-devops-ui/Button";
 
 export interface INavigationTabState {
     currentHash?: string;

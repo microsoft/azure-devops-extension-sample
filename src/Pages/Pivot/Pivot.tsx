@@ -8,7 +8,7 @@ import { showRootComponent } from "../../Common";
 import { getClient } from "azure-devops-extension-api";
 import { CoreRestClient, ProjectVisibility, TeamProjectReference } from "azure-devops-extension-api/Core";
 
-import { VssDetailsList } from "vss-ui/VssDetailsList";
+import { VssDetailsList } from "azure-devops-ui/VssDetailsList";
 import { IColumn } from "office-ui-fabric-react/lib/DetailsList";
 
 interface IPivotContentState {
