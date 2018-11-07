@@ -89,9 +89,9 @@ class HubContent extends React.Component<{}, IHubContentState> {
     private getCommandBarItems(): IHeaderCommandBarItem[] {
         return [
             {
-              key: "panel",
-              name: "Panel",
-              onClick: () => { this.onPanelClick() },
+              id: "panel",
+              text: "Panel",
+              onActivate: () => { this.onPanelClick() },
               iconProps: {
                 iconName: 'Add'
               },
@@ -101,17 +101,17 @@ class HubContent extends React.Component<{}, IHubContentState> {
               }
             },
             {
-              key: "messageDialog",
-              name: "Message",
-              onClick: () => { this.onMessagePromptClick() },
+              id: "messageDialog",
+              text: "Message",
+              onActivate: () => { this.onMessagePromptClick() },
               tooltipProps: {
                 content: "Open a simple message dialog"
               }
             },
             {
-              key: "customDialog",
-              name: "Custom Dialog",
-              onClick: () => { this.onCustomPromptClick() },
+              id: "customDialog",
+              text: "Custom Dialog",
+              onActivate: () => { this.onCustomPromptClick() },
               tooltipProps: {
                 content: "Open a dialog with custom extension content"
               }

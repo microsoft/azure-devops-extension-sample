@@ -51,7 +51,7 @@ export class ExtensionDataTab extends React.Component<{}, IExtensionDataState> {
             <div className="sample-hub-section flex-row">
                 <TextField
                     value={dataText}
-                    onChanged={this.onTextValueChanged}
+                    onChange={this.onTextValueChanged}
                     disabled={!ready}
                 />
                 <Button
@@ -65,8 +65,8 @@ export class ExtensionDataTab extends React.Component<{}, IExtensionDataState> {
         );
     }
 
-    private onTextValueChanged = (newValue: string): void => {
-        this.setState({ dataText: newValue });
+    private onTextValueChanged = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, value: string): void => {
+        this.setState({ dataText: value });
     }
 
     private onSaveData = (): void => {
