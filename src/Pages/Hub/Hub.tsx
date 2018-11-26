@@ -4,7 +4,9 @@ import * as React from "react";
 import * as SDK from "azure-devops-extension-sdk";
 import { CommonServiceIds, IHostDialogService, IHostPanelService } from "azure-devops-extension-api";
 
-import { Header, IHeaderCommandBarItem, Page, TitleSize } from "azure-devops-ui/Page";
+import { Header, TitleSize } from "azure-devops-ui/Header";
+import { IHeaderCommandBarItem } from "azure-devops-ui/HeaderCommandBar";
+import { Page } from "azure-devops-ui/Page";
 import { Tab, TabBar, TabSize } from "azure-devops-ui/Tabs";
 
 import { OverviewTab } from "./OverviewTab"; 
@@ -97,7 +99,7 @@ class HubContent extends React.Component<{}, IHubContentState> {
               },
               isPrimary: true,
               tooltipProps: {
-                content: "Open a panel with custom extension content"
+                text: "Open a panel with custom extension content"
               }
             },
             {
@@ -105,7 +107,7 @@ class HubContent extends React.Component<{}, IHubContentState> {
               text: "Message",
               onActivate: () => { this.onMessagePromptClick() },
               tooltipProps: {
-                content: "Open a simple message dialog"
+                text: "Open a simple message dialog"
               }
             },
             {
@@ -113,7 +115,7 @@ class HubContent extends React.Component<{}, IHubContentState> {
               text: "Custom Dialog",
               onActivate: () => { this.onCustomPromptClick() },
               tooltipProps: {
-                content: "Open a dialog with custom extension content"
+                text: "Open a dialog with custom extension content"
               }
             }
         ];
