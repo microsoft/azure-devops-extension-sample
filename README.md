@@ -75,6 +75,10 @@ This sample shows how to hook into the Preview Features panel (under the user pr
 This also defines a second feature (ABC v2) which controls whether v1 or v2 of the ABC hub is used (when the ABC feature is turned on). When enabled, a "property-provider" contribution modifies the name and url of the hub contribution. Here we add a v2=true query parameter to our existing hub page, but you could also
 specify a completely different html page here. This feature shows off a bit more advanced functionality provided by preview features. It can be toggled per-user, per-project, or per-organization (the "null" hostScopeValue). It is on by default (defaultState: true). And it has an override rule which causes the v2 feature to be OFF (and disabled in the preview features panel) whenever the ABC feature is off.
 
+## WorkItemOpen
+
+This sample adds a "Sample WorkItem Open" hub to the Boards hub group to show how to interact with the `IWorkItemFormNavigationService` service. It gives UI for you to open an existing work item (by id) or open the work item form for a new work item (by work item type). Either of these options open a dialog in the host frame.
+
 # References
 
 The full set of documentation for developing extensions can be found at [https://docs.microsoft.com/en-us/azure/devops/extend](https://docs.microsoft.com/en-us/azure/devops/extend/?view=vsts).

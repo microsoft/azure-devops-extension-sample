@@ -1,0 +1,19 @@
+{
+    "contributions": [
+        {
+            "id": "work-item-open-hub",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+            ],
+            "properties": {
+                "name": "Sample WorkItem Open",
+                "uri": "dist/WorkItemOpen/WorkItemOpen.html",
+                "icon": "asset://static/sample-icon.png"
+            }
+        }
+    ],
+    "scopes": [
+        "vso.work"
+    ]
+}
