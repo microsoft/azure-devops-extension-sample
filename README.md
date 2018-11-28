@@ -1,5 +1,7 @@
 # Azure DevOps Web Sample Extension
 
+[![Build Status](https://dev.azure.com/ms/azure-devops-extension-sample/_apis/build/status/Microsoft.azure-devops-extension-sample)](https://dev.azure.com/ms/azure-devops-extension-sample/_build/latest?definitionId=14)
+
 This repository generates an [Azure DevOps extension](https://docs.microsoft.com/en-us/azure/devops/extend/overview?view=vsts) containing a number of different contributions of various types.
 
 ## Dependencies
