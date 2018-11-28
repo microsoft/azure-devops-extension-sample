@@ -19,11 +19,11 @@
     "build": "npm run compile",
     "build:dev": "npm run compile:dev && npm run postbuild",
     "postbuild": "npm run package-extension -- --rev-version",
-    "package-extension": "tfx extension create --manifest-globs azure-devops-extension.json src/Pages/**/*.json",
-    "publish-extension": "tfx extension publish --manifest-globs azure-devops-extension.json src/Pages/**/*.json"
+    "package-extension": "tfx extension create --manifest-globs azure-devops-extension.json src/Samples/**/*.json",
+    "publish-extension": "tfx extension publish --manifest-globs azure-devops-extension.json src/Samples/**/*.json"
   },
   "dependencies": {
-    "azure-devops-extension-api": "~1.143.0",
+    "azure-devops-extension-api": "~1.144.0",
     "azure-devops-extension-sdk": "~2.0.3",
     "azure-devops-ui": "~1.144.0",
     "react": "~16.3.2",

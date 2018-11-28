@@ -6,8 +6,7 @@ import { BuildDefinition, BuildRestClient } from "azure-devops-extension-api/Bui
 SDK.register("sample-build-menu", () => {
     return {
         execute: async (context: BuildDefinition) => {
-
-            const result = await getClient(BuildRestClient).getDefinition(context.id, context.project.id, undefined, undefined, undefined, true);
+            const result = await getClient(BuildRestClient).getDefinition(context.project.id, context.id, undefined, undefined, undefined, true);
             const dialogSvc = await SDK.getService<IHostDialogService>(CommonServiceIds.HostDialogService);
             dialogSvc.openMessageDialog(`Fetched build definition ${result.name}. Latest build: ${JSON.stringify(result.latestBuild)}`, { showCancel: false });
         }
