@@ -42,7 +42,11 @@ Individual sample contributions are self-contained folders under `./src/Samples`
 2. `{SampleName}.html` - page which is rendered within an iframe on the appropriate Azure DevOps page or pages. It may be visible UI (such as a Hub) or a background iframe (such as a Menu action handler). This will include a sample reference for `{SampleName}.js`, and for visible frames it will contain a single `<div>` element with an id of `root`.
 3. `{SampleName}.ts(x)` - Root script that is run when the frame is loaded. A webpack entry is added for this file which will generate a single `js` file with this content and all its dependencies.
 4. `{SampleName}.scss` - optional sass file containing the styles (CSS) for the UI
-5. Additional ts/tsx files - For samples that are too big for one file, the code will be broken up appropriately 
+5. Additional ts/tsx files - For samples that are too big for one file, the code will be broken up appropriately
+
+## BreadcrumbService
+
+This sample adds a breadcrumb service which adds a "Sample Hub" global breadcrumb item to the sample hub.
 
 ## Hub
 
