@@ -46,7 +46,7 @@ Individual sample contributions are self-contained folders under `./src/Samples`
 
 ## BreadcrumbService
 
-This sample adds a breadcrumb service which adds a "Sample Hub" global breadcrumb item to the sample hub.
+This sample adds a breadcrumb service which adds a "Sample Breadcrumb Item" global breadcrumb item to the sample hub.  Visit the "Sample Hub" in the `Pipelines` hub group to see this item.
 
 ## Hub
 
