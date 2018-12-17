@@ -17,7 +17,7 @@ import { showRootComponent } from "../../Common";
 
 interface IHubContentState {
     selectedTabId: string;
-    headerKicker?: string;
+    headerDescription?: string;
     useLargeTitle?: boolean;
     useCompactPivots?: boolean;
 }
@@ -38,14 +38,14 @@ class HubContent extends React.Component<{}, IHubContentState> {
 
     public render(): JSX.Element {
 
-        const { selectedTabId, headerKicker, useCompactPivots, useLargeTitle } = this.state;
+        const { selectedTabId, headerDescription, useCompactPivots, useLargeTitle } = this.state;
 
         return (
             <Page className="sample-hub flex-grow">
 
                 <Header title="Sample Hub"
                     commandBarItems={this.getCommandBarItems()}
-                    kicker={headerKicker}
+                    description={headerDescription}
                     titleSize={useLargeTitle ? TitleSize.Large : TitleSize.Medium} />
 
                 <TabBar
@@ -154,12 +154,12 @@ class HubContent extends React.Component<{}, IHubContentState> {
             title: "My Panel",
             description: "Description of my panel",
             configuration: {
-                message: "Show header kicker?",
-                initialValue: !!this.state.headerKicker
+                message: "Show header description?",
+                initialValue: !!this.state.headerDescription
             },
             onClose: (result) => {
                 if (result !== undefined) {
-                    this.setState({ headerKicker: result ? "This is a kicker" : undefined });
+                    this.setState({ headerDescription: result ? "This is a header description" : undefined });
                 }
             }
         });
