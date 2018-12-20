@@ -85,6 +85,10 @@ specify a completely different html page here. This feature shows off a bit more
 
 This sample adds a "Sample WorkItem Open" hub to the Boards hub group to show how to interact with the `IWorkItemFormNavigationService` service. It gives UI for you to open an existing work item (by id) or open the work item form for a new work item (by work item type). Either of these options open a dialog in the host frame.
 
+# RepositoryServiceHub
+
+This sample adds a "Repository Information" hub to the `Code` hub group. It demonstrates how to interact with the `IVersionControlRepositoryService` to obtain basic information about a user's currently selected Git repository.
+
 # References
 
 The full set of documentation for developing extensions can be found at [https://docs.microsoft.com/en-us/azure/devops/extend](https://docs.microsoft.com/en-us/azure/devops/extend/?view=vsts).
