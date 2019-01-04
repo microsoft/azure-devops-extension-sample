@@ -6,7 +6,7 @@
     "name": "Extension Sample",
     "description": "Azure DevOps extension sample",
     "categories": [
-        "Pipelines"
+        "Azure Pipelines"
     ],
     "targets": [
         {
