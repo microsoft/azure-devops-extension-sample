@@ -23,7 +23,7 @@
     "publish-extension": "tfx extension publish --manifest-globs azure-devops-extension.json src/Samples/**/*.json"
   },
   "dependencies": {
-    "azure-devops-extension-api": "~1.144.1",
+    "azure-devops-extension-api": "~1.146.1",
     "azure-devops-extension-sdk": "~2.0.4",
     "azure-devops-ui": "~1.145.0",
     "react": "~16.3.2",
