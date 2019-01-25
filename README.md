@@ -28,10 +28,10 @@ This produces a .vsix file which can be uploaded to the [Visual Studio Marketpla
 
 ## Using the extension
 
-The preferred way to get started is to use the `tfx init` command which will clone from this sample and prompt you for replacement information (like your publisher id). Just run:
+The preferred way to get started is to use the `tfx extension init` command which will clone from this sample and prompt you for replacement information (like your publisher id). Just run:
 
     npm install -g tfx-cli
-    tfx init
+    tfx extension init
 
 You can also clone the sample project and change the `publisher` property in `azure-devops-extension.json` to your own Marketplace publisher id. Refer to the online [documentation](https://docs.microsoft.com/en-us/azure/devops/extend/publish/overview?view=vsts) for setting up your own publisher and publishing an extension.
 
