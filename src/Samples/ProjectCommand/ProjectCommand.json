@@ -1,0 +1,16 @@
+{
+    "contributions": [
+        {
+            "id": "project-pivot-command",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-tfs-web.suite-home-projects-pivot-commands"
+            ],
+            "properties": {
+                "text": "My custom command",
+                "uri": "dist/ProjectCommand/ProjectCommand.html",
+                "registeredObjectId": "project-custom-command"
+            }
+        }
+    ]
+}
