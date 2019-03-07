@@ -2,11 +2,11 @@
     "manifestVersion": 1,
     "id": "samples",
     "publisher": "ms-samples",
-    "version": "1.0.243",
+    "version": "1.0.261",
     "name": "Extension Sample",
     "description": "Azure DevOps extension sample",
     "categories": [
-        "Pipelines"
+        "Azure Pipelines"
     ],
     "targets": [
         {
