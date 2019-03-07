@@ -15,7 +15,10 @@
             "properties": {
                 "name": "Sample Hub",
                 "uri": "dist/Hub/Hub.html",
-                "icon": "asset://static/sample-icon.png"
+                "icon": {
+                    "light": "asset://static/sample-icon.png",
+                    "dark": "asset://static/sample-icon-dark.png"
+                }
             }
         }
     ]
