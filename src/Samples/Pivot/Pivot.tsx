@@ -6,14 +6,14 @@ import * as SDK from "azure-devops-extension-sdk";
 import { showRootComponent } from "../../Common";
 
 import { getClient } from "azure-devops-extension-api";
-import { CoreRestClient, ProjectVisibility, TeamProjectReference } from "azure-devops-extension-api/Core";
+import { CoreRestClient, TeamProjectReference } from "azure-devops-extension-api/Core";
 
-import { VssDetailsList } from "azure-devops-ui/VssDetailsList";
-import { IColumn } from "office-ui-fabric-react/lib/DetailsList";
+import { Table, ITableColumn, renderSimpleCell } from "azure-devops-ui/Table";
+import { ArrayItemProvider } from "azure-devops-ui/Utilities/Provider";
 
 interface IPivotContentState {
-    projects?: TeamProjectReference[];
-    columns: IColumn[];
+    projects?: ArrayItemProvider<TeamProjectReference>;
+    columns: ITableColumn<any>[];
 }
 
 class PivotContent extends React.Component<{}, IPivotContentState> {
@@ -23,31 +23,16 @@ class PivotContent extends React.Component<{}, IPivotContentState> {
 
         this.state = {
             columns: [{
-                key: "name",
-                fieldName: "name",
+                id: "name",
                 name: "Project",
-                onRender: (item: TeamProjectReference) => <span>{item.name}</span>,
-                minWidth: 150,
-                maxWidth: 200,
-                isResizable: true
+                renderCell: renderSimpleCell,
+                width: 200
             },
             {
-                key: "description",
-                fieldName: "description",
+                id: "description",
                 name: "Description",
-                onRender: (item: TeamProjectReference) => <span>{item.description}</span>,
-                minWidth: 300,
-                isResizable: true
-            },
-            {
-                key: "visibility",
-                fieldName: "visibility",
-                name: "Visibility",
-                onRender: (item: TeamProjectReference) => {
-                    return <span>{item.visibility === ProjectVisibility.Public ? "public" : "private"}</span>;
-                },
-                minWidth: 150,
-                isResizable: true
+                renderCell: renderSimpleCell,
+                width: 300
             }]
         };
     }
@@ -59,7 +44,9 @@ class PivotContent extends React.Component<{}, IPivotContentState> {
 
     private async initializeComponent() {
         const projects = await getClient(CoreRestClient).getProjects();
-        this.setState({ projects });
+        this.setState({
+            projects: new ArrayItemProvider(projects)
+        });
     }
 
     public render(): JSX.Element {
@@ -71,9 +58,9 @@ class PivotContent extends React.Component<{}, IPivotContentState> {
                 }
                 {
                     this.state.projects &&
-                    <VssDetailsList
-                        items={this.state.projects}
+                    <Table
                         columns={this.state.columns}
+                        itemProvider={this.state.projects}
                     />
                 }
             </div>

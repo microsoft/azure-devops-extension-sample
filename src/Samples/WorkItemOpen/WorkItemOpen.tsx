@@ -4,11 +4,13 @@ import * as SDK from "azure-devops-extension-sdk";
 import "./WorkItemOpen.scss";
 
 import { Button } from "azure-devops-ui/Button";
-import { ObservableValue } from "azure-devops-ui/Core/Observable";
+import { ObservableArray, ObservableValue } from "azure-devops-ui/Core/Observable";
 import { localeIgnoreCaseComparer } from "azure-devops-ui/Core/Util/String";
+import { Dropdown } from "azure-devops-ui/Dropdown";
+import { ListSelection } from "azure-devops-ui/List";
+import { IListBoxItem } from "azure-devops-ui/ListBox";
 import { Header } from "azure-devops-ui/Header";
 import { Page } from "azure-devops-ui/Page";
-import { PickListDropdown } from "azure-devops-ui/PickList";
 import { TextField } from "azure-devops-ui/TextField";
 
 import { CommonServiceIds, getClient, IProjectPageService } from "azure-devops-extension-api";
@@ -16,13 +18,21 @@ import { IWorkItemFormNavigationService, WorkItemTrackingRestClient, WorkItemTra
 
 import { showRootComponent } from "../../Common";
 
+
 class WorkItemOpenContent extends React.Component<{}, {}> {
 
     private workItemIdValue = new ObservableValue("1");
     private workItemTypeValue = new ObservableValue("Bug");
+    private selection = new ListSelection();
+    private workItemTypes = new ObservableArray<IListBoxItem<string>>();
+
+    constructor(props: {}) {
+        super(props);
+    }
 
     public componentDidMount() {
         SDK.init();
+        this.loadWorkItemTypes();
     }
 
     public render(): JSX.Element {
@@ -37,12 +47,13 @@ class WorkItemOpenContent extends React.Component<{}, {}> {
                     <div className="sample-form-section flex-row flex-center">
                         <div className="flex-column">
                             <label htmlFor="work-item-type-picker">New work item type:</label>
-                            <PickListDropdown
-                                id="work-item-type-picker"
+                            <Dropdown<string>
                                 className="sample-work-item-type-picker"
-                                initiallySelectedItems={[ this.workItemTypeValue.value ]}
-                                getPickListItems={() => this.getWorkItemTypes()}
-                                onSelectionChanged={(selection) => { this.workItemTypeValue.value = selection.selectedItems[0] }}
+                                listBoxProps={{
+                                    items: this.workItemTypes,
+                                    onSelect: (event, item) => { this.workItemTypeValue.value = item.data! },
+                                    selection: this.selection
+                                }}
                             />
                         </div>
                         <Button className="sample-work-item-button" text="New..." onClick={() => this.onOpenNewWorkItemClick()} />
@@ -52,21 +63,25 @@ class WorkItemOpenContent extends React.Component<{}, {}> {
         );
     }
 
-    private async getWorkItemTypes(): Promise<string[]> {
+    private async loadWorkItemTypes(): Promise<void> {
 
         const projectService = await SDK.getService<IProjectPageService>(CommonServiceIds.ProjectPageService);
         const project = await projectService.getProject();
 
+        let workItemTypeNames: string[];
+
         if (!project) {
-            return [ "Bug" ];
+            workItemTypeNames = [ "Issue" ];
+        }
+        else {
+            const client = getClient(WorkItemTrackingRestClient);
+            const types = await client.getWorkItemTypes(project.name);
+            workItemTypeNames = types.map(t => t.name);
+            workItemTypeNames.sort((a, b) => localeIgnoreCaseComparer(a, b));
         }
 
-        const client = getClient(WorkItemTrackingRestClient);
-        return client.getWorkItemTypes(project.name).then(types => {
-            const typeNames = types.map(t => t.name);
-            typeNames.sort((a, b) => localeIgnoreCaseComparer(a, b));
-            return typeNames;
-        });
+        this.workItemTypes.push(...workItemTypeNames.map(t => { return { id: t, data: t, text: t } }));
+        this.selection.select(0);
     }
 
     private async onOpenExistingWorkItemClick() {
