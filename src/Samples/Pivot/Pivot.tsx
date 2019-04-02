@@ -6,9 +6,9 @@ import * as SDK from "azure-devops-extension-sdk";
 import { showRootComponent } from "../../Common";
 
 import { getClient } from "azure-devops-extension-api";
-import { CoreRestClient, TeamProjectReference } from "azure-devops-extension-api/Core";
+import { CoreRestClient, ProjectVisibility, TeamProjectReference } from "azure-devops-extension-api/Core";
 
-import { Table, ITableColumn, renderSimpleCell } from "azure-devops-ui/Table";
+import { Table, ITableColumn, renderSimpleCell, renderSimpleCellValue } from "azure-devops-ui/Table";
 import { ArrayItemProvider } from "azure-devops-ui/Utilities/Provider";
 
 interface IPivotContentState {
@@ -33,6 +33,14 @@ class PivotContent extends React.Component<{}, IPivotContentState> {
                 name: "Description",
                 renderCell: renderSimpleCell,
                 width: 300
+            },
+            {
+                id: "visibility",
+                name: "Visibility",
+                renderCell: (rowIndex: number, columnIndex: number, tableColumn: ITableColumn<TeamProjectReference>, tableItem: TeamProjectReference): JSX.Element => {
+                    return renderSimpleCellValue<any>(columnIndex, tableColumn, tableItem.visibility === ProjectVisibility.Public ? "Public" : "Private");
+                },
+                width: 100
             }]
         };
     }

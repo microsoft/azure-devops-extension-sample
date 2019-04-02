@@ -55,7 +55,7 @@ export class ExtensionDataTab extends React.Component<{}, IExtensionDataState> {
                     disabled={!ready}
                 />
                 <Button
-                    className="sample-button sample-button-left-margin"
+                    className="left-content-spacing"
                     text="Save"
                     primary={true}
                     onClick={this.onSaveData}

@@ -1,8 +1,9 @@
 import * as React from "react";
 import * as SDK from "azure-devops-extension-sdk";
-import { CommonServiceIds, IGlobalMessagesService, MessageBannerLevel } from "azure-devops-extension-api";
+import { CommonServiceIds, IGlobalMessagesService, IHostNavigationService, MessageBannerLevel } from "azure-devops-extension-api";
 
 import { Button } from "azure-devops-ui/Button";
+import { ButtonGroup } from "azure-devops-ui/ButtonGroup";
 import { Dropdown } from "azure-devops-ui/Dropdown";
 import { ListSelection } from "azure-devops-ui/List";
 import { IListBoxItem } from "azure-devops-ui/ListBox";
@@ -44,7 +45,10 @@ export class MessagesTab extends React.Component<{}, IMessagesTabState> {
                         selection: this.state.selection
                     }}
                 />
-                <Button className="sample-button sample-button-left-margin" onClick={this.showMessageBanner} text="Show banner" />
+                <ButtonGroup className="left-content-spacing">
+                    <Button onClick={this.showMessageBanner} text="Show banner" />
+                    <Button onClick={this.showToast} text="Show toast" />
+                </ButtonGroup>
             </div>
         );
     }
@@ -58,13 +62,27 @@ export class MessagesTab extends React.Component<{}, IMessagesTabState> {
         const { messageLevel } = this.state;
 
         const globalMessagesSvc = await SDK.getService<IGlobalMessagesService>(CommonServiceIds.GlobalMessagesService);
-        globalMessagesSvc.setGlobalMessageBanner({
+        globalMessagesSvc.addBanner({
             level: messageLevel,
             messageFormat: "This is a message from the sample extension. {0}",
             messageLinks: [{
                 name: "Learn more",
                 href: "https://docs.microsoft.com/en-us/azure/devops/extend/get-started/node"
             }]
+        });
+    }
+
+    private showToast = async (): Promise<void> => {
+
+        const globalMessagesSvc = await SDK.getService<IGlobalMessagesService>(CommonServiceIds.GlobalMessagesService);
+        globalMessagesSvc.addToast({
+            callToAction: "Lean more",
+            duration: 3000,
+            message: "This is a toast from an extension",
+            onCallToActionClick: async () => {
+                const navService = await SDK.getService<IHostNavigationService>(CommonServiceIds.HostNavigationService);
+                navService.openNewWindow("https://docs.microsoft.com/en-us/azure/devops/extend/get-started/node", "");
+            }
         });
     }
 }

@@ -4,6 +4,7 @@ import * as React from "react";
 import * as SDK from "azure-devops-extension-sdk";
 
 import { Button } from "azure-devops-ui/Button";
+import { ButtonGroup } from "azure-devops-ui/ButtonGroup";
 import { Toggle } from "azure-devops-ui/Toggle";
 import { showRootComponent } from "../../Common";
 
@@ -53,19 +54,17 @@ class PanelContent extends React.Component<{}, IPanelContentState> {
                 <div className="flex-grow flex-column flex-center justify-center" style={{ border: "1px solid #eee", margin: "10px 0" }}>
                     Additional content placeholder
                 </div>
-                <div className="sample-panel-button-bar">
+                <ButtonGroup className="sample-panel-button-bar">
                     <Button
-                        className="sample-button"
                         primary={true}
                         text="OK"
                         onClick={() => this.dismiss(true)}
                     />
                     <Button
-                        className="sample-button sample-button-left-margin"
                         text="Cancel"
                         onClick={() => this.dismiss(false)}
                     />
-                </div>
+                </ButtonGroup>
             </div>
         );
     }
