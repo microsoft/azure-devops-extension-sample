@@ -1,46 +1,17 @@
 import {
+  IWorkItemChangedArgs,
+  IWorkItemFieldChangedArgs,
   IWorkItemFormService,
+  IWorkItemLoadedArgs,
   WorkItemTrackingServiceIds
 } from "azure-devops-extension-api/WorkItemTracking";
 import * as SDK from "azure-devops-extension-sdk";
 import { Button } from "azure-devops-ui/Button";
 import * as React from "react";
 import { showRootComponent } from "../../Common";
-import { Header } from "azure-devops-ui/Header";
 
 interface WorkItemFormGroupComponentState {
   eventContent: string;
-}
-
-interface IWorkItemChangedArgs {
-  /**
-   * Id of the work item.
-   */
-  id: number;
-}
-
-/**
- * Interface defining the arguments for the 'onLoaded' notification sent by the ActiveWorkItemService
- */
-interface IWorkItemLoadedArgs extends IWorkItemChangedArgs {
-  /**
-   * 'true' if the work item is a 'new', unsaved work item, 'false' otherwise.
-   */
-  isNew: boolean;
-  /**
-   * 'true' write rest apis are disabled. All controls should be rendered as readonly
-   */
-  isReadOnly: boolean;
-}
-
-/**
- * Interface defining the arguments for the 'onFieldChanged' notification sent by the ActiveWorkItemService
- */
-interface IWorkItemFieldChangedArgs extends IWorkItemChangedArgs {
-  /**
-   * Set of fields that have been changed.  'key' is the field reference name.
-   */
-  changedFields: { [key: string]: any };
 }
 
 class WorkItemFormGroupComponent extends React.Component<{},  WorkItemFormGroupComponentState> {
@@ -60,7 +31,6 @@ class WorkItemFormGroupComponent extends React.Component<{},  WorkItemFormGroupC
   public render(): JSX.Element {
     return (
       <div>
-        <Header title={"Sample group extension"} />
         <Button
           className="sample-work-item-button"
           text="Click me to change title!"
