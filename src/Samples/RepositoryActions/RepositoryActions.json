@@ -1,0 +1,16 @@
+{
+    "contributions": [
+        {
+            "id": "sample-repository-picker-action",
+            "type": "ms.vss-web.menu-item",
+            "targets": [ "ms.vss-code-web.command-bar-repository-picker-actions" ],
+            "properties": {
+                "text": "Sample repository picker action",
+                "href": "https://go.microsoft.com/fwlink/?LinkID=235189",
+                "iconProps": {
+                    "iconName" : "ReadingMode"
+                }
+            }
+        }
+    ]
+}
