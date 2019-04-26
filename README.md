@@ -48,6 +48,14 @@ Individual sample contributions are self-contained folders under `./src/Samples`
 
 This sample adds a breadcrumb service which adds a "Sample Breadcrumb Item" global breadcrumb item to the sample hub.  Visit the "Sample Hub" in the `Pipelines` hub group to see this item.
 
+## CodeEditorContribution
+
+This sample adds a language definition and a JSON schema for the code editor. 
+
+To see the language definition in action, add a new file to git or TFVC called "sample.mylog", then copy the example log content from [the Monaco playground](https://microsoft.github.io/monaco-editor/playground.html#extending-language-services-custom-languages).
+
+To see the JSON schema in action, add a new file to git or TFVC called "myconfig.json", then begin editing it.
+
 ## Hub
 
 This sample adds a hub named "Sample Hub" into the `Pipelines` hub group. If you visit a project-level page, you will find Sample Hub under the `Pipelines` navigation element in the vertical navigation menu on the left of the page.
