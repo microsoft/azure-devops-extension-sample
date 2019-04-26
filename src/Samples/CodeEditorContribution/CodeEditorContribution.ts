@@ -9,10 +9,10 @@ SDK.register("my-code-editor-contribution", () => {
                 monarchLanguage: {
                     tokenizer: {
                         root: [
-                            [/\[error.*/, "invalid"],
-                            [/\[notice.*/, "keyword"],
-                            [/\[info.*/, "comment"],
-                            [/\[[a-zA-Z 0-9:]+\]/, "type"],
+                            ["\\[error.*", "invalid"],
+                            ["\\[notice.*", "keyword"],
+                            ["\\[info.*", "comment"],
+                            ["\\[[a-zA-Z 0-9:]+\\]", "type"],
                         ]
                     }
                 },
