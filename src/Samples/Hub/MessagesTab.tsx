@@ -1,12 +1,16 @@
 import * as React from "react";
 import * as SDK from "azure-devops-extension-sdk";
-import { CommonServiceIds, IGlobalMessagesService, MessageBannerLevel } from "azure-devops-extension-api";
+import { CommonServiceIds, IGlobalMessagesService, IHostNavigationService, MessageBannerLevel } from "azure-devops-extension-api";
 
 import { Button } from "azure-devops-ui/Button";
-import { IPickListSelection, PickListDropdown } from "azure-devops-ui/PickList";
+import { ButtonGroup } from "azure-devops-ui/ButtonGroup";
+import { Dropdown } from "azure-devops-ui/Dropdown";
+import { ListSelection } from "azure-devops-ui/List";
+import { IListBoxItem } from "azure-devops-ui/ListBox";
 
 export interface IMessagesTabState {
     messageLevel?: MessageBannerLevel;
+    selection: ListSelection;
 }
 
 export class MessagesTab extends React.Component<{}, IMessagesTabState> {
@@ -14,8 +18,12 @@ export class MessagesTab extends React.Component<{}, IMessagesTabState> {
     constructor(props: {}) {
         super(props);
 
+        const selection = new ListSelection();
+        selection.select(0, 1);
+
         this.state = {
-            messageLevel: MessageBannerLevel.info
+            messageLevel: MessageBannerLevel.info,
+            selection
         };
     }
 
@@ -24,35 +32,29 @@ export class MessagesTab extends React.Component<{}, IMessagesTabState> {
         return (
             <div className="sample-hub-section flex-row flex-center">
                 <label htmlFor="message-level-picker">Message level: </label>
-                <PickListDropdown
-                    id="message-level-picker"
+                <Dropdown<MessageBannerLevel>
                     className="sample-picker"
-                    initiallySelectedItems={[{ value: MessageBannerLevel.info, name: "Info"}]}
-                    getPickListItems={() => {
-                        return [
-                            { value: MessageBannerLevel.info, name: "Info"},
-                            { value: MessageBannerLevel.error, name: "Error"},
-                            { value: MessageBannerLevel.warning, name: "Warning"},
-                            { value: MessageBannerLevel.success, name: "Success"}
-                        ]
+                    listBoxProps={{
+                        items: [
+                            { id: "info", data: MessageBannerLevel.info, text: "Info"},
+                            { id: "error", data: MessageBannerLevel.error, text: "Error"},
+                            { id: "Warning", data: MessageBannerLevel.warning, text: "Warning"},
+                            { id: "Success", data: MessageBannerLevel.success, text: "Success"}
+                        ],
+                        onSelect: this.onMessageLevelChanged,
+                        selection: this.state.selection
                     }}
-                    getListItem={(item) => {
-                        return {
-                            name: item.name,
-                            key: item.name
-                        }
-                    }}
-                    onSelectionChanged={this.onMessageLevelChanged}
                 />
-                <Button className="sample-button sample-button-left-margin" onClick={this.showMessageBanner} text="Show banner" />
+                <ButtonGroup className="left-content-spacing">
+                    <Button onClick={this.showMessageBanner} text="Show banner" />
+                    <Button onClick={this.showToast} text="Show toast" />
+                </ButtonGroup>
             </div>
         );
     }
 
-    private onMessageLevelChanged = (selection: IPickListSelection): void => {
-        if (selection.selectedItems && selection.selectedItems[0]) {
-            this.setState({ messageLevel: selection.selectedItems[0].value });
-        }
+    private onMessageLevelChanged = (event: React.SyntheticEvent<HTMLElement>, item: IListBoxItem<MessageBannerLevel>): void => {
+        this.setState({ messageLevel: item.data });
     }
 
     private showMessageBanner = async (): Promise<void> => {
@@ -60,13 +62,27 @@ export class MessagesTab extends React.Component<{}, IMessagesTabState> {
         const { messageLevel } = this.state;
 
         const globalMessagesSvc = await SDK.getService<IGlobalMessagesService>(CommonServiceIds.GlobalMessagesService);
-        globalMessagesSvc.setGlobalMessageBanner({
+        globalMessagesSvc.addBanner({
             level: messageLevel,
             messageFormat: "This is a message from the sample extension. {0}",
             messageLinks: [{
                 name: "Learn more",
                 href: "https://docs.microsoft.com/en-us/azure/devops/extend/get-started/node"
             }]
+        });
+    }
+
+    private showToast = async (): Promise<void> => {
+
+        const globalMessagesSvc = await SDK.getService<IGlobalMessagesService>(CommonServiceIds.GlobalMessagesService);
+        globalMessagesSvc.addToast({
+            callToAction: "Lean more",
+            duration: 3000,
+            message: "This is a toast from an extension",
+            onCallToActionClick: async () => {
+                const navService = await SDK.getService<IHostNavigationService>(CommonServiceIds.HostNavigationService);
+                navService.openNewWindow("https://docs.microsoft.com/en-us/azure/devops/extend/get-started/node", "");
+            }
         });
     }
 }

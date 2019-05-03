@@ -3,6 +3,7 @@ import * as SDK from "azure-devops-extension-sdk";
 import { CommonServiceIds, IHostNavigationService } from "azure-devops-extension-api";
 
 import { Button } from "azure-devops-ui/Button";
+import { ButtonGroup } from "azure-devops-ui/ButtonGroup";
 
 export interface INavigationTabState {
     currentHash?: string;
@@ -25,11 +26,11 @@ export class NavigationTab extends React.Component<{}, INavigationTabState> {
                     currentHash &&
                     <div className="sample-hub-section">Current hash: {currentHash}</div>
                 }
-                <div className="sample-hub-section">
-                    <Button className="sample-button" text="Get Hash" primary={true} onClick={this.onGetHashClick} />
-                    <Button className="sample-button sample-button-left-margin" text="Update hash" onClick={this.onUpdateHashClick} />
-                    <Button className="sample-button sample-button-left-margin" text="Update document title" onClick={this.onUpdateDocumentTitle} />
-                </div>
+                <ButtonGroup className="sample-hub-section">
+                    <Button text="Get Hash" primary={true} onClick={this.onGetHashClick} />
+                    <Button text="Update hash" onClick={this.onUpdateHashClick} />
+                    <Button text="Update document title" onClick={this.onUpdateDocumentTitle} />
+                </ButtonGroup>
             </>
         );
     }

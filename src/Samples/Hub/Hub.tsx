@@ -2,7 +2,7 @@ import "./Hub.scss";
 
 import * as React from "react";
 import * as SDK from "azure-devops-extension-sdk";
-import { CommonServiceIds, IHostDialogService, IHostPanelService } from "azure-devops-extension-api";
+import { CommonServiceIds, IHostPageLayoutService } from "azure-devops-extension-api";
 
 import { Header, TitleSize } from "azure-devops-ui/Header";
 import { IHeaderCommandBarItem } from "azure-devops-ui/HeaderCommandBar";
@@ -17,7 +17,8 @@ import { showRootComponent } from "../../Common";
 
 interface IHubContentState {
     selectedTabId: string;
-    headerKicker?: string;
+    fullScreenMode: boolean;
+    headerDescription?: string;
     useLargeTitle?: boolean;
     useCompactPivots?: boolean;
 }
@@ -28,24 +29,26 @@ class HubContent extends React.Component<{}, IHubContentState> {
         super(props);
 
         this.state = {
-            selectedTabId: "overview"
+            selectedTabId: "overview",
+            fullScreenMode: false
         };
     }
 
     public componentDidMount() {
         SDK.init();
+        this.initializeFullScreenState();
     }
 
     public render(): JSX.Element {
 
-        const { selectedTabId, headerKicker, useCompactPivots, useLargeTitle } = this.state;
+        const { selectedTabId, headerDescription, useCompactPivots, useLargeTitle } = this.state;
 
         return (
             <Page className="sample-hub flex-grow">
 
                 <Header title="Sample Hub"
                     commandBarItems={this.getCommandBarItems()}
-                    kicker={headerKicker}
+                    description={headerDescription}
                     titleSize={useLargeTitle ? TitleSize.Large : TitleSize.Medium} />
 
                 <TabBar
@@ -111,6 +114,14 @@ class HubContent extends React.Component<{}, IHubContentState> {
               }
             },
             {
+                id: "fullScreen",
+                ariaLabel: this.state.fullScreenMode ? "Exit full screen mode" : "Enter full screen mode",
+                iconProps: {
+                    iconName: this.state.fullScreenMode ? "BackToWindow" : "FullScreen"
+                },
+                onActivate: () => { this.onToggleFullScreenMode() }
+            },
+            {
               id: "customDialog",
               text: "Custom Dialog",
               onActivate: () => { this.onCustomPromptClick() },
@@ -122,7 +133,7 @@ class HubContent extends React.Component<{}, IHubContentState> {
     }
 
     private async onMessagePromptClick(): Promise<void> {
-        const dialogService = await SDK.getService<IHostDialogService>(CommonServiceIds.HostDialogService);
+        const dialogService = await SDK.getService<IHostPageLayoutService>(CommonServiceIds.HostPageLayoutService);
         dialogService.openMessageDialog("Use large title?", {
             showCancel: true,
             title: "Message dialog",
@@ -133,7 +144,7 @@ class HubContent extends React.Component<{}, IHubContentState> {
     }
 
     private async onCustomPromptClick(): Promise<void> {
-        const dialogService = await SDK.getService<IHostDialogService>(CommonServiceIds.HostDialogService);
+        const dialogService = await SDK.getService<IHostPageLayoutService>(CommonServiceIds.HostPageLayoutService);
         dialogService.openCustomDialog<boolean | undefined>(SDK.getExtensionContext().id + ".panel-content", {
             title: "Custom dialog",
             configuration: {
@@ -149,20 +160,36 @@ class HubContent extends React.Component<{}, IHubContentState> {
     }
 
     private async onPanelClick(): Promise<void> {
-        const panelService = await SDK.getService<IHostPanelService>(CommonServiceIds.HostPanelService);
+        const panelService = await SDK.getService<IHostPageLayoutService>(CommonServiceIds.HostPageLayoutService);
         panelService.openPanel<boolean | undefined>(SDK.getExtensionContext().id + ".panel-content", {
             title: "My Panel",
             description: "Description of my panel",
             configuration: {
-                message: "Show header kicker?",
-                initialValue: !!this.state.headerKicker
+                message: "Show header description?",
+                initialValue: !!this.state.headerDescription
             },
             onClose: (result) => {
                 if (result !== undefined) {
-                    this.setState({ headerKicker: result ? "This is a kicker" : undefined });
+                    this.setState({ headerDescription: result ? "This is a header description" : undefined });
                 }
             }
         });
+    }
+
+    private async initializeFullScreenState() {
+        const layoutService = await SDK.getService<IHostPageLayoutService>(CommonServiceIds.HostPageLayoutService);
+        const fullScreenMode = await layoutService.getFullScreenMode();
+        if (fullScreenMode !== this.state.fullScreenMode) {
+            this.setState({ fullScreenMode });
+        }
+    }
+
+    private async onToggleFullScreenMode(): Promise<void> {
+        const fullScreenMode = !this.state.fullScreenMode;
+        this.setState({ fullScreenMode });
+
+        const layoutService = await SDK.getService<IHostPageLayoutService>(CommonServiceIds.HostPageLayoutService);
+        layoutService.setFullScreenMode(fullScreenMode);
     }
 }
 
