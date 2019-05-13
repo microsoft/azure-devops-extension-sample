@@ -99,7 +99,7 @@ This sample adds a "Sample WorkItem Form Group" extension to workitem form to sh
 
 ## RepositoryActions
 
-This sample adds a "Sample repository action" menu item to the repository picker in the header of code hub pages. Clicking on the action will navigate to the provided link.
+This sample adds a "Sample repository action" menu item to the repository picker in the header of code hub pages. If a "href" property is provided, clicking on the action will navigate to the given url. If a "uri" is provided, that code will be executed when the action is clicked.
 
 # References
 
