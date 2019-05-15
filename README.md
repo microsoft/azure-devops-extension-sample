@@ -97,6 +97,10 @@ This sample adds a "Sample WorkItem Open" hub to the Boards hub group to show ho
 
 This sample adds a "Sample WorkItem Form Group" extension to workitem form to show how to interact with the `IWorkItemFormService` service and `IWorkItemNotificationListener`. It gives UI to show case how to change field values using the form service and displaying workitem form notification events.
 
+# RepositoryServiceHub
+
+This sample adds a "Repository Information" hub to the `Code` hub group. It demonstrates how to interact with the `IVersionControlRepositoryService` to obtain basic information about a user's currently selected Git repository.
+
 # References
 
 The full set of documentation for developing extensions can be found at [https://docs.microsoft.com/en-us/azure/devops/extend](https://docs.microsoft.com/en-us/azure/devops/extend/?view=vsts).
