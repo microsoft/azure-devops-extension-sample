@@ -7,6 +7,7 @@ export interface IOverviewTabState {
     projectName?: string;
     iframeUrl?: string;
     extensionData?: string;
+    extensionContext?: SDK.IExtensionContext;
 }
 
 export class OverviewTab extends React.Component<{}, IOverviewTabState> {
@@ -27,7 +28,10 @@ export class OverviewTab extends React.Component<{}, IOverviewTabState> {
         await SDK.ready();
         
         const userName = SDK.getUser().displayName;
-        this.setState({ userName });
+        this.setState({
+            userName,
+            extensionContext: SDK.getExtensionContext()
+         });
 
         const projectService = await SDK.getService<IProjectPageService>(CommonServiceIds.ProjectPageService);
         const project = await projectService.getProject();
@@ -38,7 +42,7 @@ export class OverviewTab extends React.Component<{}, IOverviewTabState> {
 
     public render(): JSX.Element {
 
-        const { userName, projectName, iframeUrl } = this.state;
+        const { userName, projectName, iframeUrl, extensionContext } = this.state;
 
         return (
             <div className="sample-hub-section">
@@ -48,6 +52,13 @@ export class OverviewTab extends React.Component<{}, IOverviewTabState> {
                     <div>Project: {projectName}</div>
                 }
                 <div>iframe URL: {iframeUrl}</div>
+                {
+                    extensionContext &&
+                    <>
+                        <div>Extension id: {extensionContext.id}</div>
+                        <div>Extension version: {extensionContext.version}</div>
+                    </>
+                }
             </div>
         );
     }

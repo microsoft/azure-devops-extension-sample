@@ -49,11 +49,9 @@ class WorkItemOpenContent extends React.Component<{}, {}> {
                             <label htmlFor="work-item-type-picker">New work item type:</label>
                             <Dropdown<string>
                                 className="sample-work-item-type-picker"
-                                listBoxProps={{
-                                    items: this.workItemTypes,
-                                    onSelect: (event, item) => { this.workItemTypeValue.value = item.data! },
-                                    selection: this.selection
-                                }}
+                                items={this.workItemTypes}
+                                onSelect={(event, item) => { this.workItemTypeValue.value = item.data! }}
+                                selection={this.selection}
                             />
                         </div>
                         <Button className="sample-work-item-button" text="New..." onClick={() => this.onOpenNewWorkItemClick()} />
