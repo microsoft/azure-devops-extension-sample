@@ -1,0 +1,14 @@
+{
+    "contributions": [
+        {
+            "id": "dynamic-tab-provider",
+            "type": "ms.vss-web.tab-provider",
+            "targets": [
+                "ms.vss-tfs-web.suite-home-pivots"
+            ],
+            "properties": {
+                "uri": "dist/TabProvider/TabProvider.html"
+            }
+        }
+    ]
+}
