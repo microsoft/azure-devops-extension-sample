@@ -1,12 +1,13 @@
 {
     "compilerOptions": {
         "charset": "utf8",
+        "declaration": true,
         "experimentalDecorators": true,
-        "module": "amd",
+        "importHelpers": true,
+        "module": "es6",
         "moduleResolution": "node",
-        "noImplicitAny": true,
-        "noImplicitThis": true,
-        "strict": true,
+        "preserveConstEnums": true,
+        "noEmitHelpers": true,
         "target": "es5",
         "rootDir": "src/",
         "outDir": "dist/",

@@ -7,6 +7,10 @@ import { Button } from "azure-devops-ui/Button";
 import { ButtonGroup } from "azure-devops-ui/ButtonGroup";
 import { Toggle } from "azure-devops-ui/Toggle";
 import { showRootComponent } from "../../Common";
+import {IdentityPickerDropdown, IIdentity} from "azure-devops-ui/IdentityPicker";
+import {ObservableValue} from "azure-devops-ui/Core/Observable";
+
+import {IPeoplePickerProvider, PeoplePickerProvider} from "azure-devops-extension-api/Identities/IdentityProvider";
 
 interface IPanelContentState {
     message?: string;
@@ -15,10 +19,12 @@ interface IPanelContentState {
 }
 
 class PanelContent extends React.Component<{}, IPanelContentState> {
-    
+    private  provider:IPeoplePickerProvider;
+    private  identity:ObservableValue<IIdentity | undefined> = new ObservableValue(undefined);
     constructor(props: {}) {
         super(props);
         this.state = {};
+        this.provider = new PeoplePickerProvider();
     }
 
     public componentDidMount() {
@@ -50,6 +56,8 @@ class PanelContent extends React.Component<{}, IPanelContentState> {
 
         return (
             <div className="sample-panel flex-column flex-grow">
+            
+            <IdentityPickerDropdown value={this.identity} pickerProvider={this.provider} onChange={(item?: IIdentity) => {this.identity.value = item} }/>
                 <Toggle checked={toggleValue} text={message} disabled={!ready} onChange={(e, val) => this.setState({toggleValue: val})} />
                 <div className="flex-grow flex-column flex-center justify-center" style={{ border: "1px solid #eee", margin: "10px 0" }}>
                     Additional content placeholder

@@ -3,6 +3,11 @@
         {
             "id": "panel-content",
             "type": "ms.vss-web.external-content",
+            "includes": [
+                "ms.vss-features.IIVssIdentityService",
+                "ms.vss-features.identities-content"
+            ],
+
             "properties": {
                 "uri": "dist/Panel/Panel.html"
             }
