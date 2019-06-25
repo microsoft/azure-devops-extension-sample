@@ -34,16 +34,14 @@ export class MessagesTab extends React.Component<{}, IMessagesTabState> {
                 <label htmlFor="message-level-picker">Message level: </label>
                 <Dropdown<MessageBannerLevel>
                     className="sample-picker"
-                    listBoxProps={{
-                        items: [
-                            { id: "info", data: MessageBannerLevel.info, text: "Info"},
-                            { id: "error", data: MessageBannerLevel.error, text: "Error"},
-                            { id: "Warning", data: MessageBannerLevel.warning, text: "Warning"},
-                            { id: "Success", data: MessageBannerLevel.success, text: "Success"}
-                        ],
-                        onSelect: this.onMessageLevelChanged,
-                        selection: this.state.selection
-                    }}
+                    items={[
+                        { id: "info", data: MessageBannerLevel.info, text: "Info"},
+                        { id: "error", data: MessageBannerLevel.error, text: "Error"},
+                        { id: "Warning", data: MessageBannerLevel.warning, text: "Warning"},
+                        { id: "Success", data: MessageBannerLevel.success, text: "Success"}
+                    ]}
+                    onSelect={this.onMessageLevelChanged}
+                    selection={this.state.selection}
                 />
                 <ButtonGroup className="left-content-spacing">
                     <Button onClick={this.showMessageBanner} text="Show banner" />
