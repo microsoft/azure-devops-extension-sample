@@ -45,6 +45,7 @@ export class MessagesTab extends React.Component<{}, IMessagesTabState> {
                 />
                 <ButtonGroup className="left-content-spacing">
                     <Button onClick={this.showMessageBanner} text="Show banner" />
+                    <Button onClick={this.showMessageBannerWithButtons} text="Show banner with buttons" />
                     <Button onClick={this.showToast} text="Show toast" />
                 </ButtonGroup>
             </div>
@@ -67,6 +68,31 @@ export class MessagesTab extends React.Component<{}, IMessagesTabState> {
                 name: "Learn more",
                 href: "https://docs.microsoft.com/en-us/azure/devops/extend/get-started/node"
             }]
+        });
+    }
+
+    private showMessageBannerWithButtons = async (): Promise<void> => {
+
+        const { messageLevel } = this.state;
+
+        const globalMessagesSvc = await SDK.getService<IGlobalMessagesService>(CommonServiceIds.GlobalMessagesService);
+        globalMessagesSvc.addBanner({
+            dismissable: false,
+            customIcon: "LightningBolt",
+            level: messageLevel,
+            message: "Some action needs to be performed. Do you wish to perform the action now?",
+            buttons: [
+                {
+                    text: "Yes",
+                    command: SDK.getExtensionContext().id + ".sample-service-yes-command",
+                    commandArguments: [ "test1" ]
+                },
+                {
+                    text: "No",
+                    command: SDK.getExtensionContext().id + ".sample-service-no-command",
+                    commandArguments: [ "test2" ]
+                }
+            ]
         });
     }
 
