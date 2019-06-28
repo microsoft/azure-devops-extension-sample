@@ -7,7 +7,7 @@
                 "ms.vss-work-web.work-hub-group"
             ],
             "properties": {
-                "name": "Sample WorkItem Open",
+                "name": "Sample work item open",
                 "uri": "dist/WorkItemOpen/WorkItemOpen.html",
                 "icon": {
                     "light": "static/add-grey.png",

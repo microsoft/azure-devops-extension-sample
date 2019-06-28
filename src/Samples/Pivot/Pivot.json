@@ -7,7 +7,7 @@
                 "ms.vss-tfs-web.suite-home-pivots"
             ],
             "properties": {
-                "name": "Sample Pivot",
+                "name": "Sample pivot",
                 "uri": "dist/Pivot/Pivot.html",
                 "order": 500000
             }

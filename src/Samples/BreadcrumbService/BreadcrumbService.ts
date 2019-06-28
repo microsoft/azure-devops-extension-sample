@@ -7,7 +7,7 @@ SDK.register("sample-breadcrumb-service", () => {
 
     const items = new ObservableArray<IBreadcrumbItem>([{
         key: "sample-breadcrumb",
-        text: "Sample Breadcrumb Item",
+        text: "Sample breadcrumb item",
         href: "#",
         rank: 1000
     }]);
@@ -15,7 +15,7 @@ SDK.register("sample-breadcrumb-service", () => {
     window.setTimeout(() => {
         items.push({
             key: "sample-breadcrumb-2",
-            text: "Sample Breadcrumb Item 2 (async)",
+            text: "Sample breadcrumb item 2 (async)",
             href: "#",
             rank: 2000
         });

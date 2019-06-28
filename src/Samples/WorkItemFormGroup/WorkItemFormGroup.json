@@ -8,7 +8,7 @@
                 "ms.vss-work-web.work-item-form"
             ],
             "properties": {
-                "name": "Sample Group",
+                "name": "Sample group",
                 "uri": "dist/WorkItemFormGroup/WorkItemFormGroup.html",
                 "height": 600
             }

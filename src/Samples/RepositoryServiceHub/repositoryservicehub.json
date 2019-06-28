@@ -8,7 +8,7 @@
                 "ms.vss-code-web.code-hub-group"
             ],
             "properties": {
-                "name": "Repository Information",
+                "name": "Repository information",
                 "order": 100,
                 "uri": "dist/RepositoryServiceHub/context.html"
             }

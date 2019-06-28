@@ -13,7 +13,7 @@
                 "ms.vss-features.host-dialog-service"
             ],
             "properties": {
-                "name": "Sample Hub",
+                "name": "Sample hub",
                 "uri": "dist/Hub/Hub.html",
                 "icon": "asset://static/sample-icon.png"
             }
