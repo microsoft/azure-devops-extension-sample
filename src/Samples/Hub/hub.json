@@ -11,8 +11,6 @@
                 "ms.vss-features.host-navigation-service",
                 "ms.vss-features.extension-data-service",
                 "ms.vss-features.host-dialog-service",
-                
-                "ms.vss-features.IIVssIdentityService",
                 "ms.vss-features.identities-content"
             ],
             "properties": {

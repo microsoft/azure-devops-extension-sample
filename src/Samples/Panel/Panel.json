@@ -4,7 +4,7 @@
             "id": "panel-content",
             "type": "ms.vss-web.external-content",
             "includes": [
-                "ms.vss-features.IIVssIdentityService",
+                "identity-service",
                 "ms.vss-features.identities-content"
             ],
 

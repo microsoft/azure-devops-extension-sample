@@ -10,7 +10,7 @@ import { showRootComponent } from "../../Common";
 import {IdentityPickerDropdown, IIdentity} from "azure-devops-ui/IdentityPicker";
 import {ObservableValue} from "azure-devops-ui/Core/Observable";
 
-import {IPeoplePickerProvider, PeoplePickerProvider} from "azure-devops-extension-api/Identities/IdentityProvider";
+import {IPeoplePickerProvider, PeoplePickerProvider} from "azure-devops-extension-api/Identities";
 
 interface IPanelContentState {
     message?: string;
