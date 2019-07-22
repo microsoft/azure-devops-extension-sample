@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as SDK from "azure-devops-extension-sdk";
-import { CommonServiceIds, IProjectPageService } from "azure-devops-extension-api";
+import { CommonServiceIds, IProjectPageService, IHostNavigationService, INavigationElement, IPageRoute } from "azure-devops-extension-api";
 
 export interface IOverviewTabState {
     userName?: string;
@@ -8,6 +8,9 @@ export interface IOverviewTabState {
     iframeUrl?: string;
     extensionData?: string;
     extensionContext?: SDK.IExtensionContext;
+    host?: SDK.IHostContext;
+    navElements?: INavigationElement[];
+    route?: IPageRoute;
 }
 
 export class OverviewTab extends React.Component<{}, IOverviewTabState> {
@@ -30,7 +33,8 @@ export class OverviewTab extends React.Component<{}, IOverviewTabState> {
         const userName = SDK.getUser().displayName;
         this.setState({
             userName,
-            extensionContext: SDK.getExtensionContext()
+            extensionContext: SDK.getExtensionContext(),
+            host: SDK.getHost()
          });
 
         const projectService = await SDK.getService<IProjectPageService>(CommonServiceIds.ProjectPageService);
@@ -38,11 +42,18 @@ export class OverviewTab extends React.Component<{}, IOverviewTabState> {
         if (project) {
             this.setState({ projectName: project.name });
         }
+
+        const navService = await SDK.getService<IHostNavigationService>(CommonServiceIds.HostNavigationService);
+        const navElements = await navService.getPageNavigationElements();
+        this.setState({ navElements });
+
+        const route = await navService.getPageRoute();
+        this.setState({ route });
     }
 
     public render(): JSX.Element {
 
-        const { userName, projectName, iframeUrl, extensionContext } = this.state;
+        const { userName, projectName, host, iframeUrl, extensionContext, route, navElements } = this.state;
 
         return (
             <div className="sample-hub-section">
@@ -58,6 +69,20 @@ export class OverviewTab extends React.Component<{}, IOverviewTabState> {
                         <div>Extension id: {extensionContext.id}</div>
                         <div>Extension version: {extensionContext.version}</div>
                     </>
+                }
+                {
+                    host &&
+                    <>
+                        <div>Host id: {host.id}</div>
+                        <div>Host name: {host.name}</div>
+                        <div>Host service version: {host.serviceVersion}</div>
+                    </>
+                }
+                {
+                    navElements && <div>Nav elements: {JSON.stringify(navElements)}</div>
+                }
+                {
+                    route && <div>Route: {JSON.stringify(route)}</div>
                 }
             </div>
         );
