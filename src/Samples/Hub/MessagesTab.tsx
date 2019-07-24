@@ -92,7 +92,11 @@ export class MessagesTab extends React.Component<{}, IMessagesTabState> {
                     command: SDK.getExtensionContext().id + ".sample-service-no-command",
                     commandArguments: [ "test2" ]
                 }
-            ]
+            ],
+            helpInfo: {
+                href: "https://www.microsoft.com",
+                tooltip: "This tooltip can display more information about this action..."
+            }
         });
     }
 
