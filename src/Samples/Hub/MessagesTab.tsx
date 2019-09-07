@@ -28,26 +28,27 @@ export class MessagesTab extends React.Component<{}, IMessagesTabState> {
     }
 
     public render(): JSX.Element {
-
         return (
-            <div className="sample-hub-section flex-row flex-center">
-                <label htmlFor="message-level-picker">Message level: </label>
-                <Dropdown<MessageBannerLevel>
-                    className="sample-picker"
-                    items={[
-                        { id: "info", data: MessageBannerLevel.info, text: "Info"},
-                        { id: "error", data: MessageBannerLevel.error, text: "Error"},
-                        { id: "Warning", data: MessageBannerLevel.warning, text: "Warning"},
-                        { id: "Success", data: MessageBannerLevel.success, text: "Success"}
-                    ]}
-                    onSelect={this.onMessageLevelChanged}
-                    selection={this.state.selection}
-                />
+            <div className="sample-hub-section flex-column flex-center rhythm-vertical-16">
+                <div className="flex-row">
+                    <label htmlFor="message-level-picker">Message level: </label>
+                    <Dropdown<MessageBannerLevel>
+                        className="sample-picker"
+                        items={[
+                            { id: "info", data: MessageBannerLevel.info, text: "Info"},
+                            { id: "error", data: MessageBannerLevel.error, text: "Error"},
+                            { id: "Warning", data: MessageBannerLevel.warning, text: "Warning"},
+                            { id: "Success", data: MessageBannerLevel.success, text: "Success"}
+                        ]}
+                        onSelect={this.onMessageLevelChanged}
+                        selection={this.state.selection}
+                    />
+                </div>
                 <ButtonGroup className="left-content-spacing">
                     <Button onClick={this.showMessageBanner} text="Show banner" />
                     <Button onClick={this.showMessageBannerWithButtons} text="Show banner with buttons" />
-                    <Button onClick={this.showToast} text="Show toast" />
                 </ButtonGroup>
+                <Button onClick={this.showToast} text="Show toast" />
             </div>
         );
     }

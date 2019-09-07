@@ -7,6 +7,7 @@ import { ButtonGroup } from "azure-devops-ui/ButtonGroup";
 
 export interface INavigationTabState {
     currentHash?: string;
+    currentQueryParams?: string;
 }
 
 export class NavigationTab extends React.Component<{}, INavigationTabState> {
@@ -17,21 +18,27 @@ export class NavigationTab extends React.Component<{}, INavigationTabState> {
     }
 
     public render(): JSX.Element {
-
-        const { currentHash } = this.state;
-
+        const { currentHash, currentQueryParams } = this.state;
         return (
-            <>
+            <div className="flex-column rhythm-vertical-16">
+                {
+                    currentQueryParams &&
+                    <div className="sample-hub-section">Current query params: {currentQueryParams}</div>
+                }
                 {
                     currentHash &&
                     <div className="sample-hub-section">Current hash: {currentHash}</div>
                 }
                 <ButtonGroup className="sample-hub-section">
-                    <Button text="Get Hash" primary={true} onClick={this.onGetHashClick} />
-                    <Button text="Update hash" onClick={this.onUpdateHashClick} />
-                    <Button text="Update document title" onClick={this.onUpdateDocumentTitle} />
+                    <Button text="Get QueryParams" primary={true} onClick={this.onGetQueryParamsClick} />
+                    <Button text="Update QueryParams" onClick={this.onUpdateQueryParamsClick} />
                 </ButtonGroup>
-            </>
+                <ButtonGroup className="sample-hub-section">
+                    <Button text="Get Hash" onClick={this.onGetHashClick} />
+                    <Button text="Update hash" onClick={this.onUpdateHashClick} />
+                </ButtonGroup>
+                <Button text="Update document title" onClick={this.onUpdateDocumentTitle} />
+            </div>
         );
     }
 
@@ -44,6 +51,17 @@ export class NavigationTab extends React.Component<{}, INavigationTabState> {
     private onUpdateHashClick = async (): Promise<void> => {
         const navService = await SDK.getService<IHostNavigationService>(CommonServiceIds.HostNavigationService);
         navService.setHash("time=" + new Date().getTime());
+    }
+
+    private onGetQueryParamsClick = async (): Promise<void> => {
+        const navService = await SDK.getService<IHostNavigationService>(CommonServiceIds.HostNavigationService);
+        const hash = await navService.getQueryParams();
+        this.setState({ currentQueryParams: JSON.stringify(hash) });
+    }
+
+    private onUpdateQueryParamsClick = async (): Promise<void> => {
+        const navService = await SDK.getService<IHostNavigationService>(CommonServiceIds.HostNavigationService);
+        navService.setQueryParams({ time: "" + new Date().getTime()});
     }
 
     private onUpdateDocumentTitle = async (): Promise<void> => {
