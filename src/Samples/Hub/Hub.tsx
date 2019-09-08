@@ -62,9 +62,7 @@ class HubContent extends React.Component<{}, IHubContentState> {
                     <Tab name="Messages" id="messages" />
                 </TabBar>
 
-                <div className="page-content">
-                    { this.getPageContent() }
-                </div>
+                { this.getPageContent() }
             </Page>
         );
     }

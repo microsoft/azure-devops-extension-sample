@@ -48,14 +48,13 @@ export class ExtensionDataTab extends React.Component<{}, IExtensionDataState> {
         const { dataText, ready, persistedText } = this.state;
 
         return (
-            <div className="sample-hub-section flex-row">
+            <div className="page-content page-content-top flex-row rhythm-horizontal-16">
                 <TextField
                     value={dataText}
                     onChange={this.onTextValueChanged}
                     disabled={!ready}
                 />
                 <Button
-                    className="left-content-spacing"
                     text="Save"
                     primary={true}
                     onClick={this.onSaveData}

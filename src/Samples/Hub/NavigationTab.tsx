@@ -20,24 +20,26 @@ export class NavigationTab extends React.Component<{}, INavigationTabState> {
     public render(): JSX.Element {
         const { currentHash, currentQueryParams } = this.state;
         return (
-            <div className="flex-column rhythm-vertical-16">
+            <div className="page-content page-content-top flex-column rhythm-vertical-16">
                 {
                     currentQueryParams &&
-                    <div className="sample-hub-section">Current query params: {currentQueryParams}</div>
+                    <div>Current query params: {currentQueryParams}</div>
                 }
                 {
                     currentHash &&
-                    <div className="sample-hub-section">Current hash: {currentHash}</div>
+                    <div>Current hash: {currentHash}</div>
                 }
-                <ButtonGroup className="sample-hub-section">
+                <ButtonGroup>
                     <Button text="Get QueryParams" primary={true} onClick={this.onGetQueryParamsClick} />
                     <Button text="Update QueryParams" onClick={this.onUpdateQueryParamsClick} />
                 </ButtonGroup>
-                <ButtonGroup className="sample-hub-section">
+                <ButtonGroup>
                     <Button text="Get Hash" onClick={this.onGetHashClick} />
                     <Button text="Update hash" onClick={this.onUpdateHashClick} />
                 </ButtonGroup>
-                <Button text="Update document title" onClick={this.onUpdateDocumentTitle} />
+                <ButtonGroup>
+                    <Button text="Update document title" onClick={this.onUpdateDocumentTitle} />
+                </ButtonGroup>
             </div>
         );
     }

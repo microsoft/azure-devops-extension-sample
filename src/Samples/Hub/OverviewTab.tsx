@@ -56,7 +56,7 @@ export class OverviewTab extends React.Component<{}, IOverviewTabState> {
         const { userName, projectName, host, iframeUrl, extensionContext, route, navElements } = this.state;
 
         return (
-            <div className="sample-hub-section">
+            <div className="page-content page-content-top flex-column rhythm-vertical-16">
                 <div>Hello, {userName}!</div>
                 {
                     projectName &&
@@ -65,18 +65,18 @@ export class OverviewTab extends React.Component<{}, IOverviewTabState> {
                 <div>iframe URL: {iframeUrl}</div>
                 {
                     extensionContext &&
-                    <>
+                    <div>
                         <div>Extension id: {extensionContext.id}</div>
                         <div>Extension version: {extensionContext.version}</div>
-                    </>
+                    </div>
                 }
                 {
                     host &&
-                    <>
+                    <div>
                         <div>Host id: {host.id}</div>
                         <div>Host name: {host.name}</div>
                         <div>Host service version: {host.serviceVersion}</div>
-                    </>
+                    </div>
                 }
                 {
                     navElements && <div>Nav elements: {JSON.stringify(navElements)}</div>
