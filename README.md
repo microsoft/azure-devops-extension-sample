@@ -56,6 +56,13 @@ To see the language definition in action, add a new file to git or TFVC called "
 
 To see the JSON schema in action, add a new file to git or TFVC called "myconfig.json", then begin editing it.
 
+## Feature
+
+This sample shows how to hook into the Preview Features panel (under the user profile menu). It adds a simple hub that is only shown when an "ABC" feature is turned on. The feature can be toggled per-user or per-organization.
+
+This also defines a second feature (ABC v2) which controls whether v1 or v2 of the ABC hub is used (when the ABC feature is turned on). When enabled, a "property-provider" contribution modifies the name and url of the hub contribution. Here we add a v2=true query parameter to our existing hub page, but you could also
+specify a completely different html page here. This feature shows off a bit more advanced functionality provided by preview features. It can be toggled per-user, per-project, or per-organization (the "null" hostScopeValue). It is on by default (defaultState: true). And it has an override rule which causes the v2 feature to be OFF (and disabled in the preview features panel) whenever the ABC feature is off.
+
 ## Hub
 
 This sample adds a hub named "Sample Hub" into the `Pipelines` hub group. If you visit a project-level page, you will find Sample Hub under the `Pipelines` navigation element in the vertical navigation menu on the left of the page.
@@ -68,12 +75,6 @@ The hub uses a Pivot component to draw 4 different tabs:
 
 There are also actions at the top-right of the hub which demonstrate opening dialogs and panels, including custom content within them (used in the `Panel` sample).
 
-## Pivot
-
-This sample adds a "Sample Pivot" pivot (tab) to the Organization (Project Collection) home page, next to "Projects", "My work items", and "My pull requests".
-
-This pivot makes a REST call for all the projects in the organization and it displays them in a grid view.
-
 ## Menu
 
 This sample adds a "Sample build definition menu item" to the `Builds` hub in the dropdown actions menu in the top-right of the page. The menu handler gets the current build definition from the context that is passed to it, it makes a REST call, and shows the result in a message box.
@@ -82,20 +83,15 @@ This sample adds a "Sample build definition menu item" to the `Builds` hub in th
 
 This sample is leveraged within the `Hub` sample. It is content that contains a toggle button along with OK/Cancel buttons. It can be used as custom panel or dialog content.
 
-## Feature
+## Pivot
 
-This sample shows how to hook into the Preview Features panel (under the user profile menu). It adds a simple hub that is only shown when an "ABC" feature is turned on. The feature can be toggled per-user or per-organization.
+This sample adds a "Sample Pivot" pivot (tab) to the Organization (Project Collection) home page, next to "Projects", "My work items", and "My pull requests".
 
-This also defines a second feature (ABC v2) which controls whether v1 or v2 of the ABC hub is used (when the ABC feature is turned on). When enabled, a "property-provider" contribution modifies the name and url of the hub contribution. Here we add a v2=true query parameter to our existing hub page, but you could also
-specify a completely different html page here. This feature shows off a bit more advanced functionality provided by preview features. It can be toggled per-user, per-project, or per-organization (the "null" hostScopeValue). It is on by default (defaultState: true). And it has an override rule which causes the v2 feature to be OFF (and disabled in the preview features panel) whenever the ABC feature is off.
+This pivot makes a REST call for all the projects in the organization and it displays them in a grid view.
 
-## WorkItemOpen
+## Pill
 
-This sample adds a "Sample WorkItem Open" hub to the Boards hub group to show how to interact with the `IWorkItemFormNavigationService` service. It gives UI for you to open an existing work item (by id) or open the work item form for a new work item (by work item type). Either of these options open a dialog in the host frame.
-
-## WorkItemFormGroup
-
-This sample adds a "Sample WorkItem Form Group" extension to workitem form to show how to interact with the `IWorkItemFormService` service and `IWorkItemNotificationListener`. It gives UI to show case how to change field values using the form service and displaying workitem form notification events.
+This sample adds pills to the title of the Pipeline definition (Runs) page.
 
 ## RepositoryActions
 
@@ -104,6 +100,14 @@ This sample adds a "Sample repository action" menu item to the repository picker
 ## RepositoryServiceHub
 
 This sample adds a "Repository Information" hub to the `Code` hub group. It demonstrates how to interact with the `IVersionControlRepositoryService` to obtain basic information about a user's currently selected Git repository.
+
+## WorkItemFormGroup
+
+This sample adds a "Sample WorkItem Form Group" extension to workitem form to show how to interact with the `IWorkItemFormService` service and `IWorkItemNotificationListener`. It gives UI to show case how to change field values using the form service and displaying workitem form notification events.
+
+## WorkItemOpen
+
+This sample adds a "Sample WorkItem Open" hub to the Boards hub group to show how to interact with the `IWorkItemFormNavigationService` service. It gives UI for you to open an existing work item (by id) or open the work item form for a new work item (by work item type). Either of these options open a dialog in the host frame.
 
 # References
 
