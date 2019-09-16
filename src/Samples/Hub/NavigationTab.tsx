@@ -17,6 +17,10 @@ export class NavigationTab extends React.Component<{}, INavigationTabState> {
         this.state = {};
     }
 
+    public componentDidMount() {
+        this.initialize();
+    }
+
     public render(): JSX.Element {
         const { currentHash, currentQueryParams } = this.state;
         return (
@@ -42,6 +46,13 @@ export class NavigationTab extends React.Component<{}, INavigationTabState> {
                 </ButtonGroup>
             </div>
         );
+    }
+
+    private async initialize() {
+        const navigationService = await SDK.getService<IHostNavigationService>(CommonServiceIds.HostNavigationService);
+        navigationService.onHashChanged((hash: string) => {
+            this.setState({ currentHash: hash });
+        });
     }
 
     private onGetHashClick = async (): Promise<void> => {
