@@ -93,6 +93,12 @@ This pivot makes a REST call for all the projects in the organization and it dis
 
 This sample adds pills to the title of the Pipeline definition (Runs) page.
 
+## QueryParamsHandler
+
+This sample adds a service that gets loaded on any page whenever a "showMyPanel" query parameter is present
+in the URL when any page is loaded. The startup service shows the custom panel from the Panel sample, using
+an optional "myPanelTitle" query parameter as the panel title.
+
 ## RepositoryActions
 
 This sample adds a "Sample repository action" menu item to the repository picker in the header of code hub pages. If a "href" property is provided, clicking on the action will navigate to the given url. If a "uri" is provided, that code will be executed when the action is clicked.

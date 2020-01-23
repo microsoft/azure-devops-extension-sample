@@ -1,0 +1,30 @@
+{
+    "contributions": [
+        {
+            "id": "queryparams-subscription",
+            "type": "ms.vss-web.event-subscription",
+            "targets": [
+                "ms.vss-web.tfs-website"
+            ],
+            "properties": {
+                "eventName": "page-interactive",
+                "command": {
+                    "uri": "dist/QueryParamsHandler/QueryParamsHandler.html",
+                    "serviceName": "QueryParamsService",
+                    "methodName": "handleQueryParams"
+                }
+            },
+            "constraints": [
+                {
+                    "name": "QueryParameters",
+                    "inverse": true,
+                    "properties": {
+                        "filters": {
+                            "showMyPanel": ""
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
