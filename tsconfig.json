@@ -18,7 +18,10 @@
           "es2015.promise"
         ],
         "types": [
-            "react"
-        ]
+            "react",
+            "jest",
+            "node"
+        ],
+        "esModuleInterop": true
     }
 }

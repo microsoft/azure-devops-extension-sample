@@ -1,6 +1,6 @@
 {
   "name": "azure-devops-extension-sample",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Sample Azure DevOps web extension",
   "keywords": [
     "extensions",
@@ -14,20 +14,22 @@
   },
   "scripts": {
     "clean": "rimraf ./dist",
-    "compile": "npm run clean && webpack --mode production",
-    "compile:dev": "npm run clean && webpack --mode development",
+    "compile": "npm run clean && npm run test && webpack --mode production",
+    "compile:dev": "npm run clean && npm run test && webpack --mode development",
     "build": "npm run compile",
     "build:dev": "npm run compile:dev && npm run postbuild",
     "postbuild": "npm run package-extension -- --rev-version",
     "package-extension": "tfx extension create --manifest-globs azure-devops-extension.json src/Samples/**/*.json",
-    "publish-extension": "tfx extension publish --manifest-globs azure-devops-extension.json src/Samples/**/*.json"
+    "publish-extension": "tfx extension publish --manifest-globs azure-devops-extension.json src/Samples/**/*.json",
+    "test": "env TEST_REPORT_FILENAME=test-results.xml jest --verbose"
   },
   "dependencies": {
     "azure-devops-extension-api": "~1.157.0",
     "azure-devops-extension-sdk": "~2.0.11",
     "azure-devops-ui": "~2.164.0",
-    "react": "~16.8.1",
-    "react-dom": "~16.8.1"
+    "react": "~16.13.1",
+    "react-dom": "~16.13.1",
+    "typescript": "^3.9.6"
   },
   "devDependencies": {
     "@types/react": "~16.8.2",
@@ -44,6 +46,37 @@
     "ts-loader": "~5.2.2",
     "typescript": "^2.9.2",
     "webpack": "^4.22.0",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "jest": "^26.1.0",
+    "jest-junit-reporter": "^1.1.0",
+    "ts-jest": "^26.1.1",
+    "@testing-library/react": "^10.4.4",
+    "@testing-library/jest-dom": "^5.11.0",
+    "@types/jest": "^26.0.3"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(js|ts|tsx|jsx)$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native|azure-devops-ui|azure-devops-extension-sdk)/)"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/fileMock.js",
+      "\\.(css|less|scss)$": "<rootDir>/src/__mocks__/styleMock.js"
+    },
+    "preset": "ts-jest/presets/js-with-babel",
+    "testResultsProcessor": "./node_modules/jest-junit-reporter",
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "html",
+      "cobertura"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "tsconfig.test.json"
+      }
+    }
   }
 }

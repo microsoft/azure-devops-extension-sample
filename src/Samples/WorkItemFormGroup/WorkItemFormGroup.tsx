@@ -14,7 +14,7 @@ interface WorkItemFormGroupComponentState {
   eventContent: string;
 }
 
-class WorkItemFormGroupComponent extends React.Component<{},  WorkItemFormGroupComponentState> {
+export class WorkItemFormGroupComponent extends React.Component<{},  WorkItemFormGroupComponentState> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -99,5 +99,7 @@ class WorkItemFormGroupComponent extends React.Component<{},  WorkItemFormGroupC
     );
   }
 }
+
+export default WorkItemFormGroupComponent;
 
 showRootComponent(<WorkItemFormGroupComponent />);
