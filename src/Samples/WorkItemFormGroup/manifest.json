@@ -9,7 +9,7 @@
             ],
             "properties": {
                 "name": "Sample group",
-                "uri": "dist/WorkItemFormGroup/WorkItemFormGroup.html",
+                "uri": "dist/WorkItemFormGroup/index.html",
                 "height": 600
             }
         }
