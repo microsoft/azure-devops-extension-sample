@@ -15,7 +15,7 @@ The sample repository depends on a few Azure DevOps packages:
 Some external dependencies:
 
 - `React` - Is used to render the UI in the samples, and is a dependency of `azure-devops-ui`.
-- `TypeScript` - Samples are written in TypeScript and complied to JavaScript
+- `TypeScript` - Samples are written in TypeScript and compiled to JavaScript
 - `SASS` - Extension samples are styled using SASS (which is compiled to CSS and delivered in webpack js bundles).
 - `webpack` - Is used to gather dependencies into a single javascript bundle for each sample.
 
