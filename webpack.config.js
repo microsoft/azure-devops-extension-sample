@@ -35,7 +35,19 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ["style-loader", "css-loader", "azure-devops-ui/buildScripts/css-variables-loader", "sass-loader"]
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "azure-devops-ui/buildScripts/css-variables-loader",
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sassOptions: {
+                                outputStyle: 'expanded'
+                            }
+                        }
+                    }
+                ]
             },
             {
                 test: /\.css$/,
@@ -55,9 +67,9 @@ module.exports = {
     },
     plugins: [
         new CopyWebpackPlugin({
-           patterns: [ 
-               { from: "**/*.html", context: "src/Samples" }
-           ]
+            patterns: [
+                { from: "**/*.html", context: "src/Samples" }
+            ]
         })
     ]
 };
