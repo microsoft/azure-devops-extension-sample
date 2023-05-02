@@ -41,7 +41,7 @@ class WorkItemOpenContent extends React.Component<{}, {}> {
                 <Header title="Work Item Open Sample" />
                 <div className="page-content">
                     <div className="sample-form-section flex-row flex-center">
-                        <TextField className="sample-work-item-id-input" label="Existing work item id" value={this.workItemIdValue} onChange={(ev, newValue) => { this.workItemIdValue.value = newValue; }} />
+                        <TextField className="sample-work-item-id-input" label="Existing work item id" value={this.workItemIdValue.toString()} onChange={(ev, newValue) => { this.workItemIdValue.value = newValue; }} />
                         <Button className="sample-work-item-button" text="Open..." onClick={() => this.onOpenExistingWorkItemClick()} />
                     </div>
                     <div className="sample-form-section flex-row flex-center">
