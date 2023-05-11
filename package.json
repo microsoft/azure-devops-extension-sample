@@ -77,5 +77,10 @@
         "tsconfig": "tsconfig.test.json"
       }
     }
+  },
+  "overrides": {
+    "tfx-cli": {
+      "xml2js": "0.5.0"
+    }
   }
 }
