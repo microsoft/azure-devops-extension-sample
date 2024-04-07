@@ -13,7 +13,7 @@ fs.readdirSync(samplesDir).filter(dir => {
     }
 });
 
-module.exports = {
+module.exports = (env, argv) => ({
     entry: entries,
     output: {
         filename: "[name]/[name].js"
@@ -35,21 +35,19 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ["style-loader", "css-loader", "azure-devops-ui/buildScripts/css-variables-loader", "sass-loader"]
+                use: ["style-loader", "css-loader", "sass-loader"],
             },
             {
                 test: /\.css$/,
                 use: ["style-loader", "css-loader"],
             },
             {
-                test: /\.woff$/,
-                use: [{
-                    loader: 'base64-inline-loader'
-                }]
+                test: /\.(woff|woff2|eot|ttf|otf)$/, 
+                type: 'asset/inline'
             },
             {
-                test: /\.html$/,
-                loader: "file-loader"
+                test: /\.html$/, 
+                type: 'asset/resource'
             }
         ]
     },
@@ -59,5 +57,14 @@ module.exports = {
                { from: "**/*.html", context: "src/Samples" }
            ]
         })
-    ]
-};
+    ],
+    ...(env.WEBPACK_SERVE
+        ? {
+              devtool: 'inline-source-map',
+              devServer: {
+                  server: 'https',
+                  port: 3000
+              }
+          }
+        : {})
+});

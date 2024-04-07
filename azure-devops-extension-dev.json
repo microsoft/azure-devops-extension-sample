@@ -1,0 +1,35 @@
+{
+    "manifestVersion": 1,
+    "id": "samples-dev",
+    "publisher": "ms-samples",
+    "version": "1.0.396",
+    "name": "Extension Sample [DEV]",
+    "description": "Azure DevOps extension sample. For development purposes only.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "logo.png"
+    },
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "files": [
+        {
+            "path": "static",
+            "addressable": true
+        },
+        {
+            "path": "dist",
+            "addressable": true
+        }
+    ],
+    "baseUri": "https://localhost:3000"
+}
