@@ -116,6 +116,10 @@ This sample adds a "Sample WorkItem Form Group" extension to workitem form to sh
 
 This sample also provides a unit testing example with minimal necessary mocks.
 
+## Widget, WidgetConfiguration
+
+This sample adds a widget extension using the `IConfigurableWidget` interface to demonstrate how to customize your dashboards to show status, progress, or trends.  It includes an associated widget configuration using the `IWidgetConfiguration` interface so users can customize the experience.
+
 ## WorkItemOpen
 
 This sample adds a "Sample WorkItem Open" hub to the Boards hub group to show how to interact with the `IWorkItemFormNavigationService` service. It gives UI for you to open an existing work item (by id) or open the work item form for a new work item (by work item type). Either of these options open a dialog in the host frame.

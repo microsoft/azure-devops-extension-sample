@@ -1,0 +1,30 @@
+@import "azure-devops-ui/Core/_platformCommon.scss";
+
+.content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.config-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.config-field-title {
+    color: $secondary-text;
+    font-size: 14px;
+}
+
+.error-message {
+    color: $error-text;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.error-icon {
+    margin-right: 4px;
+}
