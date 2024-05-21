@@ -6,7 +6,7 @@
             "targets": ["ms.vss-dashboards-web.widget-configuration"],
             "properties": {
                 "name": "Sample widget configuration",
-                "uri": "WidgetConfiguration/WidgetConfiguration.html"
+                "uri": "dist/WidgetConfiguration/WidgetConfiguration.html"
             }
         }
     ],
