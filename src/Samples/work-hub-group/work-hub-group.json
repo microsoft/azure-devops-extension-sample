@@ -1,0 +1,19 @@
+{
+    "contributions": [
+        {
+            "id": "custom-work-hub-group",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+            ],
+            "properties": {
+                "name": "Custom Work Hub",
+                "uri": "dist/work-hub-group/work-hub-group.html",
+                "icon": {
+                    "light": "static/app_folder.png",
+                    "dark": "static/app_folder.png"
+                }
+            }
+        }
+    ] 
+}
