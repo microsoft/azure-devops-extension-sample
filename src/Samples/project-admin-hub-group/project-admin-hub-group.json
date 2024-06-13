@@ -1,0 +1,15 @@
+{
+    "contributions": [
+        {
+            "id": "custom-project-admin-hub-group",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-web.project-admin-hub-group"
+            ],
+            "properties": {
+                "name": "Custom Project Admin Hub",
+                "uri": "dist/project-admin-hub-group/project-admin-hub-group.html"                
+            }
+        }
+    ] 
+}

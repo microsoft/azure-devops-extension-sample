@@ -1,0 +1,19 @@
+{
+    "contributions": [
+        {
+            "id": "custom-build-release-hub-group",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-build-web.build-release-hub-group"
+            ],
+            "properties": {
+                "name": "Custom Build Hub",
+                "uri": "dist/build-release-hub-group/build-release-hub-group.html",
+                "icon": {
+                    "light": "static/app_folder.png",
+                    "dark": "static/app_folder.png"
+                }
+            }
+        }
+    ] 
+}

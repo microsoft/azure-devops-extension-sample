@@ -1,0 +1,19 @@
+{
+    "contributions": [
+        {
+            "id": "custom-code-hub-group",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-code-web.code-hub-group"
+            ],
+            "properties": {
+                "name": "Custom Code Hub",
+                "uri": "dist/code-hub-group/code-hub-group.html",
+                "icon": {
+                    "light": "static/app_folder.png",
+                    "dark": "static/app_folder.png"
+                }
+            }
+        }
+    ] 
+}

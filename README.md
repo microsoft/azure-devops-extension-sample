@@ -46,6 +46,21 @@ Individual sample contributions are self-contained folders under `./src/Samples`
 4. `{SampleName}.scss` - optional sass file containing the styles (CSS) for the UI
 5. Additional ts/tsx files - For samples that are too big for one file, the code will be broken up appropriately
 
+## Hubs and hub groups
+
+Hubs and hub groups are the primary navigation elements in Azure DevOps. Files, Releases, Backlogs, and Queries are examples of hubs. A hub belongs to a hub group. The Files hub, for example, belongs to the project-level Azure Repos hub group. Hub groups can exist at the organization or collection level or the project level. Most extensions contribute to the project level.
+
+Here are samples for the [most common hub contributions](https://learn.microsoft.com/en-us/azure/devops/extend/reference/targets/overview?toc=%2Fazure%2Fdevops%2Fmarketplace-extensibility%2Ftoc.json&view=azure-devops#hubs-and-hub-groups):
+
+- Azure Boards - [work-hub-group](src/Samples/work-hub-group)
+- Azure Repos - [code-hub-group](src/Samples/code-hub-group)
+- Azure Pipelines - [build-release-hub-group](src/Samples/build-release-hub-group)
+- Azure Test Plans - [test-hub-group](src/Samples/test-hub-group)
+- Project Settings - [project-admin-hub-group](src/Samples/project-admin-hub-group)
+- Organization Settings - [collection-admin-hub-group](src/Samples/collection-admin-hub-group)
+
+# Other samples
+
 ## BreadcrumbService
 
 This sample adds a breadcrumb service which adds a "Sample Breadcrumb Item" global breadcrumb item to the sample hub.  Visit the "Sample Hub" in the `Pipelines` hub group to see this item.
