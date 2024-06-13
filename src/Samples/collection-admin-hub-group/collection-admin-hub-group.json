@@ -1,0 +1,15 @@
+{
+    "contributions": [
+        {
+            "id": "custom-collection-admin-hub-group",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-web.collection-admin-hub-group"
+            ],
+            "properties": {
+                "name": "Custom Collection Admin Hub",
+                "uri": "dist/collection-admin-hub-group/collection-admin-hub-group.html"                
+            }
+        }
+    ] 
+}

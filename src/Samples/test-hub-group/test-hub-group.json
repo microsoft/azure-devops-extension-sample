@@ -1,0 +1,19 @@
+{
+    "contributions": [
+        {
+            "id": "custom-test-hub-group",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-test-web.test-hub-group"
+            ],
+            "properties": {
+                "name": "Custom Test Hub",
+                "uri": "dist/test-hub-group/test-hub-group.html",
+                "icon": {
+                    "light": "static/app_folder.png",
+                    "dark": "static/app_folder.png"
+                }
+            }
+        }
+    ] 
+}
