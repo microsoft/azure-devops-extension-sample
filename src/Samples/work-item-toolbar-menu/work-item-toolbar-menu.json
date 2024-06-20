@@ -1,0 +1,20 @@
+{
+    "contributions": [
+        {
+            "id": "work-item-toolbar-menu",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-work-web.work-item-toolbar-menu"
+            ],
+            "properties": {
+                "text": "Custom work item toolbar action",
+                "uri": "dist/work-item-toolbar-menu/work-item-toolbar-menu.html",
+                "icon": {
+                    "light": "static/asterisk.png",
+                    "dark": "static/asterisk.png"
+                },
+                "registeredObjectId": "work-item-toolbar-menu"
+            }
+        }
+    ]   
+}

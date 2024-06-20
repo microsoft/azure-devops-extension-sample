@@ -1,0 +1,19 @@
+{
+    "contributions": [
+        {
+            "id": "query-tabs",
+            "type": "ms.vss-web.tab",
+            "targets": [
+                "ms.vss-work-web.query-tabs"
+            ],
+            "properties": {
+                "name": "Custom Tab",
+                "uri": "dist/query-tabs/query-tabs.html",
+                "icon": {
+                    "light": "static/app_folder.png",
+                    "dark": "static/app_folder.png"
+                }
+            }
+        }
+    ] 
+}
