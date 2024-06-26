@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as SDK from "azure-devops-extension-sdk";
 
-import "./project-admin-hub-group.scss";
+import "./query-tabs.scss";
 
 import { Header } from "azure-devops-ui/Header";
 import { Page } from "azure-devops-ui/Page";
@@ -9,15 +9,14 @@ import { Page } from "azure-devops-ui/Page";
 import { showRootComponent } from "../../Common";
 import { CommonServiceIds, IProjectPageService } from "azure-devops-extension-api";
 
-interface IProjectAdminHubGroup {
+interface IQueryTabGroupState {
     projectContext: any;
 }
 
-class ProjectAdminHubGroup extends React.Component<{}, IProjectAdminHubGroup> {   
-
+class QueryTabGroup extends React.Component<{}, IQueryTabGroupState> {
     constructor(props: {}) {
-        super(props);
-        this.state = { projectContext: undefined };  
+        super(props);  
+        this.state = { projectContext: undefined };      
     }
 
     public componentDidMount() {
@@ -39,7 +38,7 @@ class ProjectAdminHubGroup extends React.Component<{}, IProjectAdminHubGroup> {
     public render(): JSX.Element {
         return (
             <Page className="sample-hub flex-grow">
-                <Header title="Custom Project Admin Hub" />
+                <Header title="Custom Query Tab" />
                 <div className="page-content">                    
                     <div className="webcontext-section">
                         <h2>Project Context:</h2>
@@ -48,7 +47,7 @@ class ProjectAdminHubGroup extends React.Component<{}, IProjectAdminHubGroup> {
                 </div>
             </Page>
         );
-    }   
+    }
 
     private async loadProjectContext(): Promise<void> {
         try {            
@@ -64,4 +63,4 @@ class ProjectAdminHubGroup extends React.Component<{}, IProjectAdminHubGroup> {
     }
 }
 
-showRootComponent(<ProjectAdminHubGroup />);
+showRootComponent(<QueryTabGroup />);

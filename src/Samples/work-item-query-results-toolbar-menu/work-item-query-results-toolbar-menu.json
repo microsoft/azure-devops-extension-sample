@@ -1,0 +1,20 @@
+{
+    "contributions": [
+        {
+            "id": "work-item-query-results-toolbar-menu",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-work-web.work-item-query-results-toolbar-menu"
+            ],
+            "properties": {
+                "text": "Custom query results toolbar action",
+                "uri": "dist/work-item-query-results-toolbar-menu/work-item-query-results-toolbar-menu.html",
+                "icon": {
+                    "light": "static/asterisk.png",
+                    "dark": "static/asterisk.png"
+                },
+                "registeredObjectId": "work-item-query-results-toolbar-menu"
+            }
+        }
+    ]   
+}
