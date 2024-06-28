@@ -1,0 +1,18 @@
+{
+    "contributions": [
+        {
+            "id": "custom-sprint-board-pivot-filter-menu",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-work-web.sprint-board-pivot-filter-menu"
+            ],
+            "properties": {
+                "text": "Sprint board menu",
+                "uri": "dist/sprint-board-pivot-filter-menu/sprint-board-pivot-filter-menu.html",
+                "group": "actions",
+                "icon": "static/asterisk-small.png",
+                "registeredObjectId": "sprint-board-pivot-filter-menu"
+            }
+        }
+    ]   
+}

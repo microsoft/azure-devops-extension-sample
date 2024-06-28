@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as SDK from "azure-devops-extension-sdk";
 
-import "./build-release-hub-group.scss";
+import "./product-backlog-tabs.scss";
 
 import { Header } from "azure-devops-ui/Header";
 import { Page } from "azure-devops-ui/Page";
@@ -9,15 +9,14 @@ import { Page } from "azure-devops-ui/Page";
 import { showRootComponent } from "../../Common";
 import { CommonServiceIds, IProjectPageService } from "azure-devops-extension-api";
 
-interface IBuildHubGroup {
-    projectContext: any;
+interface IProductBacklogTab {
+    projectContext: any;    
 }
 
-class BuildHubGroup extends React.Component<{}, IBuildHubGroup> {   
-
+class ProductBacklogTab extends React.Component<{}, IProductBacklogTab> {
     constructor(props: {}) {
-        super(props);
-        this.state = { projectContext: undefined };  
+        super(props);  
+        this.state = { projectContext: undefined };      
     }
 
     public componentDidMount() {
@@ -27,7 +26,7 @@ class BuildHubGroup extends React.Component<{}, IBuildHubGroup> {
             
             SDK.ready().then(() => {
                 console.log("SDK is ready, loading project context...");
-                this.loadProjectContext();
+                this.loadProjectContext();               
             }).catch((error) => {
                 console.error("SDK ready failed: ", error);
             });
@@ -39,16 +38,16 @@ class BuildHubGroup extends React.Component<{}, IBuildHubGroup> {
     public render(): JSX.Element {
         return (
             <Page className="sample-hub flex-grow">
-                <Header title="Custom Build Hub" />
+                <Header title="Custom Backlog Tab" />
                 <div className="page-content">                    
                     <div className="webcontext-section">
                         <h2>Project Context:</h2>
                         <pre>{JSON.stringify(this.state.projectContext, null, 2)}</pre>
-                    </div>
+                    </div>                   
                 </div>
             </Page>
         );
-    }   
+    }
 
     private async loadProjectContext(): Promise<void> {
         try {            
@@ -61,7 +60,7 @@ class BuildHubGroup extends React.Component<{}, IBuildHubGroup> {
         } catch (error) {
             console.error("Failed to load project context: ", error);
         }
-    } 
+    }   
 }
 
-showRootComponent(<BuildHubGroup />);
+showRootComponent(<ProductBacklogTab />);

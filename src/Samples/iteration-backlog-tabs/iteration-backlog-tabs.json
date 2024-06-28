@@ -1,0 +1,15 @@
+{
+    "contributions": [
+        {
+            "id": "iteration-backlog-tabs",
+            "type": "ms.vss-web.tab",
+            "targets": [
+                "ms.vss-work-web.iteration-backlog-tabs"
+            ],
+            "properties": {
+                "name": "Custom Sprint Tab",
+                "uri": "dist/iteration-backlog-tabs/iteration-backlog-tabs.html"                
+            }
+        }
+    ] 
+}
