@@ -1,0 +1,15 @@
+{
+    "contributions": [
+        {
+            "id": "product-backlog-tabs",
+            "type": "ms.vss-web.tab",
+            "targets": [
+                "ms.vss-work-web.product-backlog-tabs"
+            ],
+            "properties": {
+                "name": "Custom Backlog Tab",
+                "uri": "dist/product-backlog-tabs/product-backlog-tabs.html"                
+            }
+        }
+    ] 
+}
