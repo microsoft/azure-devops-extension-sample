@@ -15,28 +15,29 @@ interface IBacklogToolPane {
     selectedWorkItems: any[];
 }
 
-interface IContributedPanel {
-    workItemSelectionChanged: (selectedWorkItems: any[]) => void;
-}
-
-class BacklogToolPane extends React.Component<{}, IBacklogToolPane> implements IContributedPanel {
+class BacklogToolPane extends React.Component<{}, IBacklogToolPane> {
     constructor(props: {}) {
         super(props);  
-        this.state = { projectContext: undefined, selectedWorkItems: [] };       
-        this.workItemSelectionChanged = this.workItemSelectionChanged.bind(this);      
+        this.state = { projectContext: undefined, selectedWorkItems: [] };         
     }
 
     public componentDidMount() {
-        try {        
-            console.log("Component did mount, initializing SDK...");
+        try {   
+            
+            console.log("Component did mount, register objects...");
+            SDK.register("backlogPanelObject", {
+                workItemSelectionChanged: (workItemInfos: any) => {
+                  console.log("workItemSelectionChanged", workItemInfos);
+                  this.setState({ selectedWorkItems: workItemInfos });
+                }
+            });
+
+            console.log("Initializing SDK...");
             SDK.init();
             
             SDK.ready().then(() => {
                 console.log("SDK is ready, loading project context...");
-                this.loadProjectContext();    
-                
-                 // Register the work item selection change listener
-                 this.registerWorkItemSelectionListener();
+                this.loadProjectContext();                  
             }).catch((error) => {
                 console.error("SDK ready failed: ", error);
             });
@@ -48,12 +49,16 @@ class BacklogToolPane extends React.Component<{}, IBacklogToolPane> implements I
     public render(): JSX.Element {
         return (
             <Page className="sample-hub flex-grow">                
-                <div className="page-content sample-margin">                    
-                    <div className="webcontext-section">
-                        <h2>Project Context:</h2>
-                        <pre>{JSON.stringify(this.state.projectContext, null, 2)}</pre>
-                    </div>
+            <div className="page-content sample-margin">                    
+                <div className="webcontext-section">
+                    <h2>Project Context:</h2>
+                    <pre>{JSON.stringify(this.state.projectContext, null, 2)}</pre>
                 </div>
+                <div>
+                    <h2>Selected Work Items:</h2>
+                    <pre>{JSON.stringify(this.state.selectedWorkItems, null, 2)}</pre>
+                </div>
+            </div>
             </Page>
         );
     }   
@@ -69,20 +74,7 @@ class BacklogToolPane extends React.Component<{}, IBacklogToolPane> implements I
         } catch (error) {
             console.error("Failed to load project context: ", error);
         }
-    }
-
-    private registerWorkItemSelectionListener(): void {
-        SDK.register(SDK.getContributionId(), () => {
-            SDK.register(SDK.getContributionId(), {
-                onWorkItemSelectionChanged: this.workItemSelectionChanged
-            });
-        });
-    }
-
-    public workItemSelectionChanged(selectedWorkItems: any[]): void {
-        console.log("Work item selection changed: ", selectedWorkItems);
-        this.setState({ selectedWorkItems });
-    }
+    }   
 }
 
 showRootComponent(<BacklogToolPane />);

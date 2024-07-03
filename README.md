@@ -38,7 +38,7 @@ You can also clone the sample project and change the `publisher` property in `az
 
 # Samples
 
-Individual sample contributions are self-contained folders under `./src/Samples`. Within each sample you will find:
+Individual sample contributions are self-contained folders under `./src/Samples`. These samples will match those contribution points [as documented](https://learn.microsoft.com/en-us/azure/devops/extend/reference/targets/overview?view=azure-devops). Within each sample you will find:
 
 1. `{SampleName}.json` - describes the contribution objects being added to Azure DevOps
 2. `{SampleName}.html` - page which is rendered within an iframe on the appropriate Azure DevOps page or pages. It may be visible UI (such as a Hub) or a background iframe (such as a Menu action handler). This will include a sample reference for `{SampleName}.js`, and for visible frames it will contain a single `<div>` element with an id of `root`.
@@ -59,7 +59,33 @@ Here are samples for the [most common hub contributions](https://learn.microsoft
 - Project Settings - [project-admin-hub-group](src/Samples/project-admin-hub-group)
 - Organization Settings - [collection-admin-hub-group](src/Samples/collection-admin-hub-group)
 
-# Other samples
+## Azure Boards menu and toolbar
+
+- Work item query menu - [work-item-query-menu](src/Samples/work-item-query-menu)
+- Work item query results toolbar menu - [work-item-query-results-toolbar-menu](src/Samples/work-item-query-results-toolbar-menu)
+- Work item query results menu item - [query-result-work-item-menu](src/Samples/query-result-work-item-menu)
+- Work item query results tab - [query-tabs](src/Samples/query-tabs)
+- Work item for context menu - [work-item-toolbar-menu](src/Samples/work-item-toolbar-menu)
+- Backlog item menu - [backlog-item-menu](src/Samples/backlog-item-menu)
+- Sprint board pivot filter menu - [sprint-board-pivot-filter-menu](src/Samples/sprint-board-pivot-filter-menu)
+- Board pivot filter menu - [backlog-board-pivot-filter-menu](src/Samples/backlog-board-pivot-filter-menu)
+- Card menu - [backlog-board-card-item-menu](src/Samples/backlog-board-card-item-menu)
+- Product backlog tab - [product-backlog-tabs](src/Samples/product-backlog-tabs)
+- Iteration backlog tab - [iteration-backlog-tabs](src/Samples/iteration-backlog-tabs)
+- Portfolio backlog pane - [portfolio-backlog-toolpane](src/Samples/backlog-toolpane)
+- Product backlog pane - [requirement-backlog-toolpane](src/Samples/backlog-toolpane)
+- Iteration backlog pane - [iteration-backlog-toolpane](src/Samples/backlog-toolpane)
+
+## Dashboard widgets
+
+This sample adds a widget extension using the `IConfigurableWidget` interface to demonstrate how to customize your dashboards to show status, progress, or trends.  It includes an associated widget configuration using the `IWidgetConfiguration` interface so users can customize the experience.
+
+- Widget - [widget-catalog](src/Samples/widget)
+- Widget configuration - [widget-configuration](src/Samples/widget-configuration)
+
+# Examples
+
+Examples are self contained samples that demonstrate how to use the Azure DevOps SDK to interact with the Azure DevOps REST APIs. They are located in the `./src/Examples` folder. The examples are not be included when building the extension.
 
 ## BreadcrumbService
 
@@ -130,10 +156,6 @@ This sample adds a "Repository Information" hub to the `Code` hub group. It demo
 This sample adds a "Sample WorkItem Form Group" extension to workitem form to show how to interact with the `IWorkItemFormService` service and `IWorkItemNotificationListener`. It gives UI to show case how to change field values using the form service and displaying workitem form notification events.
 
 This sample also provides a unit testing example with minimal necessary mocks.
-
-## Widget, WidgetConfiguration
-
-This sample adds a widget extension using the `IConfigurableWidget` interface to demonstrate how to customize your dashboards to show status, progress, or trends.  It includes an associated widget configuration using the `IWidgetConfiguration` interface so users can customize the experience.
 
 ## WorkItemOpen
 

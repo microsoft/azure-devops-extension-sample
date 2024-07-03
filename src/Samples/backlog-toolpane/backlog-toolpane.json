@@ -11,7 +11,8 @@
             "properties": {
                 "name": "Custom Panel",
                 "title": "Custom Panel",
-                "uri": "dist/backlog-toolpane/backlog-toolpane.html"                       
+                "uri": "dist/backlog-toolpane/backlog-toolpane.html",     
+                "registeredObjectId": "backlogPanelObject"                
             }
         }
     ] 
