@@ -3,7 +3,10 @@
         {
             "id": "sample-widget",
             "type": "ms.vss-dashboards-web.widget",
-            "targets": ["ms.vss-dashboards-web.widget-catalog", ".sample-widget.config"],
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog", 
+                ".sample-widget.config"
+            ],
             "properties": {
                 "name": "Sample widget",
                 "description": "Shows current pipeline status",
