@@ -1,6 +1,6 @@
 import * as SDK from 'azure-devops-extension-sdk';
 import { CommonServiceIds, IProjectPageService,  getClient } from 'azure-devops-extension-api';
-  import { Build, BuildDefinition, BuildQueryOrder, BuildRestClient, BuildStatus } from 'azure-devops-extension-api/Build';
+import { Build, BuildDefinition, BuildQueryOrder, BuildRestClient, BuildStatus } from 'azure-devops-extension-api/Build';
 
 async function getCurrentProjectId(): Promise<string | undefined> {
   const pps = await SDK.getService<IProjectPageService>(

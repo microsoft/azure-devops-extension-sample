@@ -1,4 +1,4 @@
-import "./Widget.scss";
+import "./widget-catalog.scss";
 import * as React from "react";
 import * as SDK from "azure-devops-extension-sdk";
 import * as Dashboard from "azure-devops-extension-api/Dashboard";
