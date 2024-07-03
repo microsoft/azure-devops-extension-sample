@@ -80,7 +80,7 @@ Here are samples for the [most common hub contributions](https://learn.microsoft
 
 This sample adds a widget extension using the `IConfigurableWidget` interface to demonstrate how to customize your dashboards to show status, progress, or trends.  It includes an associated widget configuration using the `IWidgetConfiguration` interface so users can customize the experience.
 
-- Widget - [widget-catalog](src/Samples/widget)
+- Widget - [widget-catalog](src/Samples/widget-catalog)
 - Widget configuration - [widget-configuration](src/Samples/widget-configuration)
 
 # Examples
