@@ -8,7 +8,7 @@ import {
     waitForElementToBeRemoved
 } from '@testing-library/react';
 import React from 'react';
-import WorkItemFormGroupComponent from '../../Samples/WorkItemFormGroup/WorkItemFormGroup'
+import WorkItemFormGroupComponent from '../../Examples/WorkItemFormGroup/WorkItemFormGroup'
 import { mockSetFieldValue, spyWorkItemCallBackAccessor } from '../../__mocks__/azure-devops-extension-sdk'
 
 // AzDO related Mocks are loaded automatically (implementations /src/__mocks__)

@@ -1,0 +1,19 @@
+{
+    "contributions": [
+        {
+            "id": "backlog-toolpane",
+            "type": "ms.vss-work-web.backlog-panel",
+            "targets": [
+                "ms.vss-work-web.iteration-backlog-toolpane",
+                "ms.vss-work-web.requirement-backlog-toolpane",
+				"ms.vss-work-web.portfolio-backlog-toolpane"				
+            ],
+            "properties": {
+                "name": "Custom Panel",
+                "title": "Custom Panel",
+                "uri": "dist/backlog-toolpane/backlog-toolpane.html",     
+                "registeredObjectId": "backlogPanelObject"                
+            }
+        }
+    ] 
+}
