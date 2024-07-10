@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as SDK from "azure-devops-extension-sdk";
 
-import "./build-release-hub-group.scss";
+import "./backlog-toolpane.scss";
 
 import { Header } from "azure-devops-ui/Header";
 import { Page } from "azure-devops-ui/Page";
@@ -9,25 +9,35 @@ import { Page } from "azure-devops-ui/Page";
 import { showRootComponent } from "../../Common";
 import { CommonServiceIds, IProjectPageService } from "azure-devops-extension-api";
 
-interface IBuildHubGroup {
+
+interface IBacklogToolPane {
     projectContext: any;
+    selectedWorkItems: any[];
 }
 
-class BuildHubGroup extends React.Component<{}, IBuildHubGroup> {   
-
+class BacklogToolPane extends React.Component<{}, IBacklogToolPane> {
     constructor(props: {}) {
-        super(props);
-        this.state = { projectContext: undefined };  
+        super(props);  
+        this.state = { projectContext: undefined, selectedWorkItems: [] };         
     }
 
     public componentDidMount() {
-        try {        
-            console.log("Component did mount, initializing SDK...");
+        try {   
+            
+            console.log("Component did mount, register objects...");
+            SDK.register("backlogPanelObject", {
+                workItemSelectionChanged: (workItemInfos: any) => {
+                  console.log("workItemSelectionChanged", workItemInfos);
+                  this.setState({ selectedWorkItems: workItemInfos });
+                }
+            });
+
+            console.log("Initializing SDK...");
             SDK.init();
             
             SDK.ready().then(() => {
                 console.log("SDK is ready, loading project context...");
-                this.loadProjectContext();
+                this.loadProjectContext();                  
             }).catch((error) => {
                 console.error("SDK ready failed: ", error);
             });
@@ -38,14 +48,17 @@ class BuildHubGroup extends React.Component<{}, IBuildHubGroup> {
 
     public render(): JSX.Element {
         return (
-            <Page className="sample-hub flex-grow">
-                <Header title="Custom Build Hub" />
-                <div className="page-content">                    
-                    <div className="webcontext-section">
-                        <h2>Project Context:</h2>
-                        <pre>{JSON.stringify(this.state.projectContext, null, 2)}</pre>
-                    </div>
+            <Page className="sample-hub flex-grow">                
+            <div className="page-content sample-margin">                    
+                <div className="webcontext-section">
+                    <h2>Project Context:</h2>
+                    <pre>{JSON.stringify(this.state.projectContext, null, 2)}</pre>
                 </div>
+                <div>
+                    <h2>Selected Work Items:</h2>
+                    <pre>{JSON.stringify(this.state.selectedWorkItems, null, 2)}</pre>
+                </div>
+            </div>
             </Page>
         );
     }   
@@ -61,7 +74,7 @@ class BuildHubGroup extends React.Component<{}, IBuildHubGroup> {
         } catch (error) {
             console.error("Failed to load project context: ", error);
         }
-    } 
+    }   
 }
 
-showRootComponent(<BuildHubGroup />);
+showRootComponent(<BacklogToolPane />);

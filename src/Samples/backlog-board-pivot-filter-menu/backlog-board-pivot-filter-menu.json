@@ -1,0 +1,17 @@
+{
+    "contributions": [
+        {
+            "id": "backlog-board-pivot-filter-menu",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-work-web.backlog-board-pivot-filter-menu"
+            ],
+            "properties": {
+                "text": "Custom board menu item",
+                "uri": "dist/backlog-board-pivot-filter-menu/backlog-board-pivot-filter-menu.html",
+                "icon": "static/asterisk-small.png",
+                "registeredObjectId": "backlog-board-pivot-filter-menu"
+            }
+        }
+    ]   
+}

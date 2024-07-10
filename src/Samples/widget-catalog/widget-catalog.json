@@ -1,0 +1,24 @@
+{
+    "contributions": [
+        {
+            "id": "sample-widget",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog", 
+                ".sample-widget.config"
+            ],
+            "properties": {
+                "name": "Sample widget",
+                "description": "Shows current pipeline status",
+                "catalogIconUrl": "logo.png",
+                "uri": "widget-catalog/widget-catalog.html",
+                "isNameConfigurable": true,
+                "supportedSizes": [{ "rowSpan": 1, "columnSpan": 1 }],
+                "supportedScopes": ["project_team"]
+            }
+        }
+    ],
+    "scopes": [
+        "vso.build"
+    ]
+}

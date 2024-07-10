@@ -1,0 +1,20 @@
+{
+    "contributions": [
+        {
+            "id": "backlog-board-card-item-menu",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-work-web.backlog-board-card-item-menu"
+            ],
+            "properties": {
+                "text": "Custom card menu item",
+                "uri": "dist/backlog-board-card-item-menu/backlog-board-card-item-menu",
+                "icon": {
+                    "light": "static/asterisk.png",
+                    "dark": "static/asterisk.png"
+                },
+                "registeredObjectId": "backlog-board-card-item-menu"
+            }
+        }
+    ]   
+}
