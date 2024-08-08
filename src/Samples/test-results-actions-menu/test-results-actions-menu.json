@@ -1,0 +1,20 @@
+{
+    "contributions": [
+        {
+            "id": "test-results-actions-menu",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-test-web.test-results-actions-menu"
+            ],
+            "properties": {
+                "text": "Custom action",
+                "uri": "dist/test-results-actions-menu/test-results-actions-menu.html",
+                "icon": {
+                    "light": "static/asterisk.png",
+                    "dark": "static/asterisk.png"
+                },
+                "registeredObjectId": "test-results-actions-menu"
+            }
+        }
+    ]   
+}

@@ -1,0 +1,15 @@
+{
+    "contributions": [
+        {
+            "id": "test-result-details-tab-items",
+            "type": "ms.vss-web.tab",
+            "targets": [
+                "ms.vss-test-web.test-result-details-tab-items"
+            ],
+            "properties": {
+                "name": "Custom Test Tab",
+                "uri": "dist/test-result-details-tab-items/test-result-details-tab-items.html"                
+            }
+        }
+    ] 
+}
