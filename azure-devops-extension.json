@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "samples",
     "publisher": "DanHellem",
-    "version": "1.0.460",
+    "version": "1.0.464",
     "name": "Extension Sample",
     "description": "Azure DevOps extension sample",
     "categories": [
