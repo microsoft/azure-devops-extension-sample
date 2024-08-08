@@ -1,0 +1,20 @@
+{
+    "contributions": [
+        {
+            "id": "completed-build-menu",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-build-web.completed-build-menu"
+            ],
+            "properties": {
+                "text": "Custom completed build action",
+                "uri": "dist/completed-build-menu/completed-build-menu.html",
+                "icon": {
+                    "light": "static/asterisk.png",
+                    "dark": "static/asterisk.png"
+                },
+                "registeredObjectId": "completed-build-menu"
+            }
+        }
+    ]   
+}
