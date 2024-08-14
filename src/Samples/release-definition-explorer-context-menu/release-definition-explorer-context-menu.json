@@ -1,0 +1,20 @@
+{
+    "contributions": [
+        {
+            "id": "release-definition-explorer-context-menu",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-releaseManagement-web.release-definition-explorer-context-menu"
+            ],
+            "properties": {
+                "text": "Custom release definition action",
+                "uri": "dist/release-definition-explorer-context-menu/release-definition-explorer-context-menu.html",
+                "icon": {
+                    "light": "static/asterisk.png",
+                    "dark": "static/asterisk.png"
+                },
+                "registeredObjectId": "release-definition-explorer-context-menu"
+            }
+        }
+    ]   
+}
