@@ -1,0 +1,17 @@
+{
+    "contributions": [
+        {
+            "id": "pipelines-header-menu",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-build-web.pipelines-header-menu"
+            ],
+            "properties": {
+                "text": "Custom item",
+                "uri": "dist/pipelines-header-menu/pipelines-header-menu.html",
+                "icon": "static/asterisk-small.png",
+                "registeredObjectId": "pipelines-header-menu"
+            }
+        }
+    ]   
+}

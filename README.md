@@ -76,6 +76,16 @@ Here are samples for the [most common hub contributions](https://learn.microsoft
 - Product backlog pane - [requirement-backlog-toolpane](src/Samples/backlog-toolpane)
 - Iteration backlog pane - [iteration-backlog-toolpane](src/Samples/backlog-toolpane)
 
+## Azure Pipelines menu and toolbar
+
+- Completed build menu - [completed-build-menu](src/Samples/completed-build-menu)
+- Build definitions menu - [build-definitions-menu](src/Samples/build-definitions-menu)
+- Test results toolbar action - [test-results-actions-menu](src/Samples/test-results-actions-menu)
+- Test result details tab - [test-result-details-tab-items](src/Samples/test-result-details-tab-items)
+- Release pipeline explorer context menu - [release-definition-explorer-context-menu](src/Samples/release-definition-explorer-context-menu)
+- Pipeline details view, header button - [pipelines-header-menu](src/Samples/pipelines-header-menu)
+- Pipeline details view, folder context menu - [pipelines-folder-menu](src/Samples/pipelines-folder-menu)
+  
 ## Dashboard widgets
 
 This sample adds a widget extension using the `IConfigurableWidget` interface to demonstrate how to customize your dashboards to show status, progress, or trends.  It includes an associated widget configuration using the `IWidgetConfiguration` interface so users can customize the experience.
