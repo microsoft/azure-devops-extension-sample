@@ -1,0 +1,15 @@
+{
+    "contributions": [
+        {
+            "id": "pr-tabs",
+            "type": "ms.vss-web.tab",
+            "targets": [
+                "ms.vss-code-web.pr-tabs"
+            ],
+            "properties": {
+                "name": "Custom PR Details Tab",
+                "uri": "dist/pr-tabs/pr-tabs.html"                
+            }
+        }
+    ] 
+}

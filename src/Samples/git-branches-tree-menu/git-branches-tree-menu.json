@@ -1,0 +1,17 @@
+{
+    "contributions": [
+        {
+            "id": "git-branches-tree-menu",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-code-web.git-branches-tree-menu"
+            ],
+            "properties": {
+                "text": "Custom Git branch tree action",
+                "uri": "dist/git-branches-tree-menu/git-branches-tree-menu.html",
+                "icon": "static/asterisk-small.png",
+                "registeredObjectId": "git-branches-tree-menu"
+            }
+        }
+    ]   
+}
