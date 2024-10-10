@@ -1,0 +1,17 @@
+{
+    "contributions": [
+        {
+            "id": "git-commit-details-menu",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-code-web.git-commit-details-menu"
+            ],
+            "properties": {
+                "text": "Custom commit details action",
+                "uri": "dist/git-commit-details-menu/git-commit-details-menu.html",
+                "icon": "static/asterisk-small.png",
+                "registeredObjectId": "git-commit-details-menu"
+            }
+        }
+    ]   
+}

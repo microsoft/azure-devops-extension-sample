@@ -1,0 +1,17 @@
+{
+    "contributions": [
+        {
+            "id": "source-tree-item-menu",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-code-web.source-tree-item-menu"
+            ],
+            "properties": {
+                "text": "Custom source tree item action",
+                "uri": "dist/source-tree-item-menu/source-tree-item-menu.html",
+                "icon": "static/asterisk-small.png",
+                "registeredObjectId": "source-tree-item-menu"
+            }
+        }
+    ]   
+}

@@ -1,0 +1,17 @@
+{
+    "contributions": [
+        {
+            "id": "source-grid-item-menu",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-code-web.source-grid-item-menu"
+            ],
+            "properties": {
+                "text": "Custom source grid item action",
+                "uri": "dist/source-grid-item-menu/source-grid-item-menu.html",
+                "icon": "static/asterisk-small.png",
+                "registeredObjectId": "source-grid-item-menu"
+            }
+        }
+    ]   
+}

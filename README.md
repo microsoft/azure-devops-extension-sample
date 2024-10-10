@@ -85,6 +85,16 @@ Here are samples for the [most common hub contributions](https://learn.microsoft
 - Release pipeline explorer context menu - [release-definition-explorer-context-menu](src/Samples/release-definition-explorer-context-menu)
 - Pipeline details view, header button - [pipelines-header-menu](src/Samples/pipelines-header-menu)
 - Pipeline details view, folder context menu - [pipelines-folder-menu](src/Samples/pipelines-folder-menu)
+
+## Azure Repos menu and toolbar
+- Source item (grid) menu - [source-grid-item-menu](src/samples/source-grid-item-menu)
+- Source item (tree) menu - [source-tree-item-menu](src/samples/source-tree-item-menu)
+- Source item (grid and tree) menu - [source-item-menu](src/samples/source-item-menu)
+- Git branches tree menu - [git-branches-tree-menu](src/samples/git-branches-tree-menu)
+- Git pull request actions menu - [pull-request-action-menu](src/samples/pull-request-action-menu)
+- Git pull request details tabs - [pr-tabs](src/samples/pr-tabs)
+- Git commit listing menu - [git-commit-list-menu](src/samples/git-commit-list-menu)
+- Git commit detail menu - [git-commit-details-menu](src/samples/git-commit-details-menu)
   
 ## Dashboard widgets
 
