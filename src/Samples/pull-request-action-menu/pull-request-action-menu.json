@@ -1,0 +1,17 @@
+{
+    "contributions": [
+        {
+            "id": "pull-request-action-menu",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-code-web.pull-request-action-menu"
+            ],
+            "properties": {
+                "text": "Custom pull request details action",
+                "uri": "dist/pull-request-action-menu/pull-request-action-menu.html",
+                "icon": "static/asterisk-small.png",
+                "registeredObjectId": "pull-request-action-menu"
+            }
+        }
+    ]   
+}

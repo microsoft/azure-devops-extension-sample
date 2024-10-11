@@ -1,0 +1,17 @@
+{
+    "contributions": [
+        {
+            "id": "source-item-menu",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-code-web.source-item-menu"
+            ],
+            "properties": {
+                "text": "Custom source item action",
+                "uri": "dist/source-item-menu/source-item-menu.html",
+                "icon": "static/asterisk-small.png",
+                "registeredObjectId": "source-item-menu"
+            }
+        }
+    ]   
+}

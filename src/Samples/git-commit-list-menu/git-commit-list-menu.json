@@ -1,0 +1,17 @@
+{
+    "contributions": [
+        {
+            "id": "git-commit-list-menu",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-code-web.git-commit-list-menu"
+            ],
+            "properties": {
+                "text": "Custom commit list action",
+                "uri": "dist/git-commit-list-menu/git-commit-list-menu.html",
+                "icon": "static/asterisk-small.png",
+                "registeredObjectId": "git-commit-list-menu"
+            }
+        }
+    ]   
+}
