@@ -1,0 +1,17 @@
+{
+    "contributions": [
+        {
+            "id": "test-run-grid-menu",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-test-web.test-run-grid-menu"
+            ],
+            "properties": {
+                "text": "Custom test run action",
+                "uri": "dist/test-run-grid-menu/test-run-grid-menu.html",
+                "icon": "static/asterisk-small.png",
+                "registeredObjectId": "test-run-grid-menu"
+            }
+        }
+    ]   
+}

@@ -1,0 +1,17 @@
+{
+    "contributions": [
+        {
+            "id": "test-plans-suites-context",
+            "type": "ms.vss-web.action",
+            "targets": [
+                "ms.vss-test-web.test-plans-suites-context"
+            ],
+            "properties": {
+                "text": "Custom test suite action",
+                "uri": "dist/test-plans-suites-context/test-plans-suites-context.html",
+                "icon": "static/asterisk-small.png",
+                "registeredObjectId": "test-plans-suites-context"
+            }
+        }
+    ]   
+}
