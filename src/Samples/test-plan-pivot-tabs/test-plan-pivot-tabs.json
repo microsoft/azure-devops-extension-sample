@@ -1,0 +1,15 @@
+{
+    "contributions": [
+        {
+            "id": "test-plan-pivot-tabs",
+            "type": "ms.vss-web.tab",
+            "targets": [
+                "ms.vss-test-web.test-plan-pivot-tabs"
+            ],
+            "properties": {
+                "name": "Custom Test Plan Tab",
+                "uri": "dist/test-plan-pivot-tabs/test-plan-pivot-tabs.html"                
+            }
+        }
+    ] 
+}

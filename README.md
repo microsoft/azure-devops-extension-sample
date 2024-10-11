@@ -87,6 +87,7 @@ Here are samples for the [most common hub contributions](https://learn.microsoft
 - Pipeline details view, folder context menu - [pipelines-folder-menu](src/Samples/pipelines-folder-menu)
 
 ## Azure Repos menu and toolbar
+
 - Source item (grid) menu - [source-grid-item-menu](src/samples/source-grid-item-menu)
 - Source item (tree) menu - [source-tree-item-menu](src/samples/source-tree-item-menu)
 - Source item (grid and tree) menu - [source-item-menu](src/samples/source-item-menu)
@@ -95,7 +96,13 @@ Here are samples for the [most common hub contributions](https://learn.microsoft
 - Git pull request details tabs - [pr-tabs](src/samples/pr-tabs)
 - Git commit listing menu - [git-commit-list-menu](src/samples/git-commit-list-menu)
 - Git commit detail menu - [git-commit-details-menu](src/samples/git-commit-details-menu)
-  
+
+## Azure Test Plans menu and toolbar
+
+- Test run grid menu - [test-run-grid-menu](src/samples/test-run-grid-menu)
+- Test plan suites tree menu - [test-plans-suites-context](src/samples/test-plans-suites-context)
+- Test plan hub pivot tab - [test-plan-pivot-tabs](src/samples/test-plan-pivot-tabs)
+
 ## Dashboard widgets
 
 This sample adds a widget extension using the `IConfigurableWidget` interface to demonstrate how to customize your dashboards to show status, progress, or trends.  It includes an associated widget configuration using the `IWidgetConfiguration` interface so users can customize the experience.
