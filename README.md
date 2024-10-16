@@ -88,20 +88,20 @@ Here are samples for the [most common hub contributions](https://learn.microsoft
 
 ## Azure Repos menu and toolbar
 
-- Source item (grid) menu - [source-grid-item-menu](src/samples/source-grid-item-menu)
-- Source item (tree) menu - [source-tree-item-menu](src/samples/source-tree-item-menu)
-- Source item (grid and tree) menu - [source-item-menu](src/samples/source-item-menu)
-- Git branches tree menu - [git-branches-tree-menu](src/samples/git-branches-tree-menu)
-- Git pull request actions menu - [pull-request-action-menu](src/samples/pull-request-action-menu)
-- Git pull request details tabs - [pr-tabs](src/samples/pr-tabs)
-- Git commit listing menu - [git-commit-list-menu](src/samples/git-commit-list-menu)
-- Git commit detail menu - [git-commit-details-menu](src/samples/git-commit-details-menu)
+- Source item (grid) menu - [source-grid-item-menu](src/Samples/source-grid-item-menu)
+- Source item (tree) menu - [source-tree-item-menu](src/Samples/source-tree-item-menu)
+- Source item (grid and tree) menu - [source-item-menu](src/Samples/source-item-menu)
+- Git branches tree menu - [git-branches-tree-menu](src/Samples/git-branches-tree-menu)
+- Git pull request actions menu - [pull-request-action-menu](src/Samples/pull-request-action-menu)
+- Git pull request details tabs - [pr-tabs](src/Samples/pr-tabs)
+- Git commit listing menu - [git-commit-list-menu](src/Samples/git-commit-list-menu)
+- Git commit detail menu - [git-commit-details-menu](src/Samples/git-commit-details-menu)
 
 ## Azure Test Plans menu and toolbar
 
-- Test run grid menu - [test-run-grid-menu](src/samples/test-run-grid-menu)
-- Test plan suites tree menu - [test-plans-suites-context](src/samples/test-plans-suites-context)
-- Test plan hub pivot tab - [test-plan-pivot-tabs](src/samples/test-plan-pivot-tabs)
+- Test run grid menu - [test-run-grid-menu](src/Samples/test-run-grid-menu)
+- Test plan suites tree menu - [test-plans-suites-context](src/Samples/test-plans-suites-context)
+- Test plan hub pivot tab - [test-plan-pivot-tabs](src/Samples/test-plan-pivot-tabs)
 
 ## Dashboard widgets
 
