@@ -26,6 +26,7 @@ class PanelContent extends React.Component<{}, IPanelContent> {
                 console.log("SDK is ready, loading project config...");
                 this.setState({ configuration: SDK.getConfiguration() });
                 this.loadProjectContext();
+                SDK.resize(400, 600);
             }).catch((error) => {
                 console.error("SDK ready failed: ", error);
             });

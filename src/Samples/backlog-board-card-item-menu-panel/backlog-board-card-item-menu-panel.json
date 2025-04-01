@@ -1,20 +1,20 @@
 {
     "contributions": [
         {
-            "id": "backlog-board-card-item-menu",
+            "id": "backlog-board-card-item-menu-panel",
             "type": "ms.vss-web.action",
             "targets": [
                 "ms.vss-work-web.backlog-board-card-item-menu"
             ],
             "properties": {
-                "text": "Custom card menu item",
-                "uri": "dist/backlog-board-card-item-menu/backlog-board-card-item-menu.html",
+                "text": "Custom card menu item panel",
+                "uri": "dist/backlog-board-card-item-menu-panel/backlog-board-card-item-menu-panel.html",
                 "icon": {
                     "light": "static/asterisk.png",
                     "dark": "static/asterisk.png"
                 },
-                "registeredObjectId": "backlog-board-card-item-menu"
+                "registeredObjectId": "backlog-board-card-item-menu-panel"
             }
         }
-    ]   
+    ]
 }
