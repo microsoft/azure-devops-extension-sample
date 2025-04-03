@@ -40,7 +40,7 @@ class PanelContent extends React.Component<{}, IPanelContent> {
             <Page>
                 <div>
                     <div>
-                        <h2>Context:</h2>
+                        <h2>Extension Context:</h2>
                         <pre>{JSON.stringify(this.state.configuration, null, 2)}</pre>
                     </div>
                     <div>
