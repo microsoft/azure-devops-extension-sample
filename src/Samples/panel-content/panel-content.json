@@ -1,0 +1,13 @@
+{
+    "contributions": [
+        {
+            "id": "panel-content",
+            "type": "ms.vss-web.external-content",
+            "properties": {
+                "name:": "Custom Panel Content",
+                "uri": "dist/panel-content/panel-content.html",
+                "registeredObjectId": "panel-content"
+            }
+        }
+    ]
+}

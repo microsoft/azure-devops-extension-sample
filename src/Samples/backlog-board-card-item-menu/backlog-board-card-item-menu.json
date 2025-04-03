@@ -8,7 +8,7 @@
             ],
             "properties": {
                 "text": "Custom card menu item",
-                "uri": "dist/backlog-board-card-item-menu/backlog-board-card-item-menu",
+                "uri": "dist/backlog-board-card-item-menu/backlog-board-card-item-menu.html",
                 "icon": {
                     "light": "static/asterisk.png",
                     "dark": "static/asterisk.png"
@@ -16,5 +16,5 @@
                 "registeredObjectId": "backlog-board-card-item-menu"
             }
         }
-    ]   
+    ]
 }

@@ -1,7 +1,7 @@
 {
     "contributions": [
         {
-            "id": "custom-sprint-board-pivot-filter-menu",
+            "id": "sprint-board-pivot-filter-menu",
             "type": "ms.vss-web.action",
             "targets": [
                 "ms.vss-work-web.sprint-board-pivot-filter-menu"
@@ -14,5 +14,5 @@
                 "registeredObjectId": "sprint-board-pivot-filter-menu"
             }
         }
-    ]   
+    ]
 }
