@@ -7,7 +7,7 @@ import { Header } from "azure-devops-ui/Header";
 import { Page } from "azure-devops-ui/Page";
 
 import { showRootComponent } from "../../Common";
-import { CommonServiceIds, IProjectPageService, getClient,  } from "azure-devops-extension-api";
+import { CommonServiceIds, IProjectPageService } from "azure-devops-extension-api";
 
 
 interface IBacklogToolPane {
