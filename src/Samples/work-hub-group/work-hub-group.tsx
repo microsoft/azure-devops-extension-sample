@@ -8,7 +8,7 @@ import { Page } from "azure-devops-ui/Page";
 
 import { showRootComponent } from "../../Common";
 import { CommonServiceIds, IProjectPageService, getClient } from "azure-devops-extension-api";
-import { WorkItemExpand, WorkItemTrackingRestClient } from "azure-devops-extension-api/WorkItemTracking";
+import { WorkItemTrackingRestClient } from "azure-devops-extension-api/WorkItemTracking";
 
 interface IWorkHubGroup {
     projectContext: any;
